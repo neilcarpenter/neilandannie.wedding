@@ -12,7 +12,7 @@ function _getStaticAssets () {
   let manifest, assets
 
   try {
-    manifest = require('../build/rev-manifest.json')
+    manifest = require('../rev-manifest.json')
   } catch (e) {
     console.log('No rev-manifest found, using defaults.')
   }
@@ -69,7 +69,7 @@ function getHeader (version) {
 function getPageMarkup (vars = {}) {
   const htmlTmpl = template(htmlTmplStr)
   const htmlVars = _getHtmlVars(vars)
-  const svgSymbols = fs.readFileSync(path.resolve(__dirname, '../build/img/icons/symbol/svg/sprite.symbol.svg'))
+  const svgSymbols = fs.readFileSync(path.resolve(__dirname, '../build/assets/img/icons/symbol/svg/sprite.symbol.svg'))
 
   htmlVars.main = compileTemplate('core/Wrapper', {
     pageContent: vars.pageContent

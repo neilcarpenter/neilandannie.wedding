@@ -11,13 +11,17 @@ import Analytics from 'common/Analytics'
 
 import Home from 'views/pages/Home'
 import About from 'views/pages/About'
+import Rsvp from 'views/pages/Rsvp'
+import RsvpEvening from 'views/pages/RsvpEvening'
 
 const Wrapper = AbstractView.extend({
   template: 'wrapper',
 
   pages: [
     Home,
-    About
+    About,
+    Rsvp,
+    RsvpEvening
   ],
 
   activePageRequest: null,

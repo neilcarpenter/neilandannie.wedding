@@ -5,8 +5,8 @@ export function getPageHtml (version) {
   version = version || 1
 
   return getPageMarkup({
-    title: 'Homepage',
-    pageContent: compileTemplate('pages/Home', {
+    title: 'RSVP evening page',
+    pageContent: compileTemplate('pages/RsvpEvening', {
       version,
       test: compileTemplate('components/Test', { version })
     }),
@@ -14,8 +14,8 @@ export function getPageHtml (version) {
   })
 }
 
-function home (req, res) {
+function rsvpEvening (req, res) {
   return res.send(getPageHtml(req.params.version))
 }
 
-export default home
+export default rsvpEvening

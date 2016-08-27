@@ -16,13 +16,12 @@ configuration.express = {
 }
 
 configuration.BASE_ROUTES = {
-  PAGES: 'pages',
-  PREVIEW: 'preview'
+  PAGES: '',
 }
 
 configuration.hostName = process.env.HOST_NAME || `http://${configuration.express.ip}:${configuration.express.port}`
 configuration.apiHost = process.env.API_HOST
-configuration.homePath = 'home'
+configuration.homePath = ''
 
 configuration.localesAvailable = [
   'en'

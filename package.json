@@ -22,7 +22,7 @@
     "start:dev": "forever restart app/start.js || forever start app/start.js"
   },
   "folders": {
-    "dest": "app/build",
+    "dest": "app/build/assets",
     "src": "src",
     "vendor": "src/js/vendor"
   },

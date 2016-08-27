@@ -1,22 +1,15 @@
 import appConfig from '../config/app'
-import pagesConfig from '../config/pages'
 
 import home from './home'
 import about from './about'
+import rsvp from './rsvp'
+import rsvpEvening from './rsvp_evening'
 
-const base = appConfig.BASE_ROUTES.PAGES
 const version = ':version([0-9]{1,})?'
-const { PAGES } = pagesConfig
-
-function rootRedirect (req, res) {
-  const route = `/${base}/${PAGES.HOME.route}`
-  return res.redirect(301, route)
-}
 
 export default function (app) {
-  app.get(`/`, rootRedirect)
-  app.get(`/${base}?/?`, rootRedirect)
-  app.get(`/${base}/${PAGES.HOME.route}/:version?`, home)
-  app.get(`/${base}/${PAGES.ABOUT.route}/:version?`, about)
+  app.get(`/rsvp/evening/:version?`, rsvpEvening)
+  app.get(`/rsvp/:version?`, rsvp)
+  app.get(`/about/:version?`, about)
+  app.get(`/:version?`, home)
 }
-export { rootRedirect }

@@ -1,4 +1,5 @@
 import gulp from 'gulp'
+import path from 'path'
 import vinylPaths from 'vinyl-paths'
 import del from 'del'
 import filter from 'gulp-filter'
@@ -12,13 +13,14 @@ const src = [
   pkg.folders.dest + '/**/*.{' + exts.join(',') + '}'
 ]
 const dest = pkg.folders.dest
+const destManifest = path.resolve(pkg.folders.dest, '../../')
 
 gulp.task('_versionCleanAssets', () => {
   return gulp.src(src)
     .pipe(rev())
     .pipe(gulp.dest(dest))
     .pipe(rev.manifest())
-    .pipe(gulp.dest(dest))
+    .pipe(gulp.dest(destManifest))
 })
 
 gulp.task('revAssets', [ '_versionCleanAssets' ], () => {

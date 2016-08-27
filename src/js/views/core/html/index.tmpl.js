@@ -34,9 +34,9 @@ export default `
   <meta name="twitter:image:width"  content="">
   <meta name="twitter:image:height" content="">
 
-  <link rel="stylesheet" href="/<%= assets.cssMain %>">
+  <link rel="stylesheet" href="/assets/<%= assets.cssMain %>">
 
-  <script src="/<%= assets.jsModernizr %>"></script>
+  <script src="/assets/<%= assets.jsModernizr %>"></script>
 
   <!--[if IE9]>
     <script src="/<%= assets.jsClassList %>"></script>
@@ -54,7 +54,7 @@ export default `
     <%= header %>
     <%= main %>
   </div>
-  <script src="/<%= assets.jsMain %>"></script>
+  <script src="/assets/<%= assets.jsMain %>"></script>
   <script>
     // (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
     // (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),

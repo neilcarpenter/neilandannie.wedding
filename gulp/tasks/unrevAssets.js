@@ -1,4 +1,5 @@
 import gulp from 'gulp'
+import path from 'path'
 import fs from 'fs'
 import rename from 'gulp-rename'
 import vinylPaths from 'vinyl-paths'
@@ -11,6 +12,7 @@ const re = new RegExp('(-[a-z0-9]{8,})(.(' + exts.join('|') + '))$', 'i')
 
 const src = pkg.folders.dest + '/**/*.{' + exts.join(',') + '}'
 const dest = pkg.folders.dest
+const destManifest = path.resolve(pkg.folders.dest, '../../')
 
 function removeHash (path) {
   if (exts.indexOf(path.extname.substr(1)) > -1) {
@@ -30,7 +32,7 @@ gulp.task('unrevAssets', [ '_cleanFilenames' ], () => {
   })
 
   try {
-    fs.unlinkSync(`${dest}/rev-manifest.json`)
+    fs.unlinkSync(`${destManifest}/rev-manifest.json`)
   } catch (e) {
     console.log('No rev-manifest to remove...')
   }
