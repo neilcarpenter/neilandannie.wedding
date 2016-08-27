@@ -1,0 +1,146 @@
+@function get-gutter($grid) {
+  $col-count: susy-get(columns, $grid);
+  $gutter-width: susy-get(gutters, $grid);
+  $column: span(1 of $grid);
+
+  @return ((100 - ($column * $col-count)) / ($col-count - 1));
+}
+
+@function get-nested-span($cols, $nest-count, $grid, $extra: narrow) {
+  $gutter-width: susy-get(gutters, map-get($grids, $grid));
+
+  @return span($cols of $nest-count $gutter-width $extra);
+}
+
+$max-width-gutter: floor(1560 * (strip-unit(get-gutter(map-get($grids, desktop))) / 100));
+$max-width: 1560 - $max-width-gutter * 2;
+
+$bp-default: 'default';
+$layout: map-get($grids, $bp-default);
+$columns: susy-get(columns, $layout);
+$gutter: get-gutter($layout);
+
+.g-sm-gut {
+  margin-left: $gutter;
+}
+
+.g-sm-gut-neg {
+  margin-left: -#{$gutter};
+  margin-right: -#{$gutter};
+}
+
+.sm-hide {
+  display: none !important;
+}
+
+.container {
+  max-width: 1560px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $gutter;
+  padding-right: $gutter;
+
+  @include wider-than('tabletportrait') {
+    $grid-desktop: map-get($grids, 'tablet');
+    $gutter: get-gutter($grid-desktop);
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+
+  @include wider-than('desktop') {
+    $grid-desktop: map-get($grids, 'desktop');
+    $gutter: get-gutter($grid-desktop);
+    padding-left: $gutter;
+    padding-right: $gutter;
+  }
+}
+
+[class*="-col-"] {
+  float: left;
+}
+
+@for $idx from 1 through $columns {
+  .g-sm-col-#{$idx} {
+    width: span($idx of $layout);
+  }
+
+  .g-sm-col-#{$idx}-vw {
+    width: to-vw(span($idx of $layout));
+  }
+}
+
+@include wider-than('tabletportrait') {
+  $bp-tablet: 'tablet';
+  $layout: map-get($grids, $bp-tablet);
+  $columns: susy-get(columns, $layout);
+  $gutter: get-gutter($layout);
+
+  .g-md-gut {
+    margin-left: $gutter;
+  }
+
+  .g-md-gut-neg {
+    margin-left: -#{$gutter};
+    margin-right: -#{$gutter};
+  }
+
+  .md-hide {
+    display: none !important;
+  }
+
+  .md-show {
+    display: block !important;
+  }
+
+  @for $idx from 1 through $columns {
+    .g-md-col-#{$idx} {
+      width: span($idx of $layout narrow);
+    }
+
+    .g-md-col-#{$idx}-vw {
+      width: to-vw(span($idx of $layout narrow));
+    }
+
+    .g-md-push-#{$idx} {
+      margin-left: span($idx of $layout wide);
+    }
+  }
+}
+
+@include wider-than('desktop') {
+  $bp-desktop: 'desktop';
+  $layout: map-get($grids, $bp-desktop);
+  $columns: susy-get(columns, $layout);
+  $gutter: get-gutter($layout);
+
+  .g-lg-gut {
+    margin-left: $gutter;
+  }
+
+  .g-lg-gut-neg {
+    margin-left: -#{$gutter};
+    margin-right: -#{$gutter};
+  }
+
+  .lg-hide {
+    display: none !important;
+  }
+
+  .lg-show {
+    display: block !important;
+  }
+
+  @for $idx from 1 through $columns {
+    .g-lg-col-#{$idx} {
+      width: span($idx of $layout narrow);
+    }
+
+    .g-lg-col-#{$idx}-vw {
+      width: to-vw(span($idx of $layout narrow));
+    }
+
+    .g-lg-push-#{$idx} {
+      margin-left: span($idx of $layout wide);
+    }
+  }
+}

@@ -1,0 +1,65 @@
+$bp: 'default';
+$layout: map-get($grids, $bp);
+$gutter: get-gutter($layout);
+
+.grid-guides {
+  display: none;
+  height: 100%;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: $z-index-gridguides;
+
+  &.show-guides {
+    display: block;
+  }
+
+  .guide-col {
+    border-left: 1px solid #4affff;
+    border-right: 1px solid #4affff;
+    box-sizing: border-box;
+    float: left;
+    height: 100%;
+    width: span(1 of $layout);
+
+    &:not(:first-child) {
+      margin-left: $gutter;
+    }
+  }
+
+  @include wider-than('tabletportrait') {
+    $bp: 'tablet';
+    $layout: map-get($grids, $bp);
+    $gutter: get-gutter($layout);
+
+    .guide-col {
+      width: span(1 of $layout);
+
+      &:not(:first-child) {
+        margin-left: $gutter;
+      }
+    }
+  }
+
+  @include wider-than('desktop') {
+    $bp: 'desktop';
+    $layout: map-get($grids, $bp);
+    $gutter: get-gutter($layout);
+
+    .guide-col {
+      width: span(1 of $layout);
+
+      &:not(:first-child) {
+        margin-left: $gutter;
+      }
+    }
+  }
+
+  @include capwidth {
+    left: 50%;
+    max-width: 1560px;
+    transform: translateX(-50%);
+  }
+}

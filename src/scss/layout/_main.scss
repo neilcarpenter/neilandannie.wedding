@@ -1,0 +1,75 @@
+body {
+  color: $black;
+  -webkit-font-smoothing: antialiased;
+  -moz-font-smoothing: grayscale;
+  font-kerning: normal;
+  font-variant: none;
+  text-rendering: geometricPosition;
+}
+
+@media screen and (min-resolution: 2dppx) {
+  body {
+    -webkit-font-smoothing: subpixel-antialiased;
+  }
+}
+
+*,
+*:after {
+  box-sizing: border-box;
+}
+
+.cf:before,
+.cf:after {
+  content: '';
+  display: table;
+}
+
+.cf:after {
+  clear: both;
+}
+
+[data-scroll-item] {
+  opacity: 1;
+  perspective: 500px;
+  position: relative;
+  transform: none;
+  transition: all 0.5s $cubic-ease-out;
+  visibility: visible;
+
+  .js.naaw_scroll_transition &:not(.show) {
+    opacity: 0;
+    transform: translate3d(0, -15px, 0);
+    visibility: hidden;
+  }
+}
+
+.block {
+  display: block;
+}
+
+.left {
+  float: left;
+}
+
+.right {
+  float: right;
+}
+
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+}
+
+.top-0 { top: 0 }
+.right-0 { right: 0 }
+.bottom-0 { bottom: 0 }
+.left-0 { left: 0 }
+
+.wrapper {}
+
+.m0 {
+  margin: 0;
+}

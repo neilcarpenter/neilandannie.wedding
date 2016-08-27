@@ -1,0 +1,205 @@
+//
+// FONT FAMILIES
+//
+
+$ff-aileron: 'Aileron', Helvetica, Arial, sans-serif;
+$ff-mikro: 'Mikro', Helvetica, Arial, sans-serif;
+
+$fw-mikro-light: 300;
+$fw-mikro-regular: 600;
+$fw-mikro-medium: 900;
+
+$fw-aileron-bold: bold;
+$fw-aileron-light: 300;
+
+//
+// FONT SIZINGS
+// These are stored as maps w font size and line height enclosed
+//
+
+$font-size-root: 16;
+$base-font-size: #{$font-size-root}px;
+
+$h1: (
+  size: 6.6rem,
+  lineHeight: 7.2rem,
+  sizeMob: 3.6rem,
+  lineHeightMob: 4.2rem,
+  sizeTab: 5.4rem,
+  lineHeightTab: 6rem,
+  tracking: 0.015em
+);
+$h2: (
+  size: 6.6rem,
+  lineHeight: 7.2rem,
+  sizeMob: 3.6rem,
+  lineHeightMob: 4.2rem,
+  sizeTab: 5.4rem,
+  lineHeightTab: 6rem,
+  tracking: 0.015em
+);
+$h3: (
+  size: 5.4rem,
+  lineHeight: 6rem,
+  sizeMob: 3rem,
+  lineHeightMob: 3.6rem,
+  sizeTab: 4.2rem,
+  lineHeightTab: 4.8rem,
+  tracking: 0.015em
+);
+$h4: (
+  size: 4.2rem,
+  lineHeight: 4.8rem,
+  sizeMob: 2.4rem,
+  lineHeightMob: 3rem,
+  sizeTab: 3.6rem,
+  lineHeightTab: 4.2rem,
+  tracking: 0.015em
+);
+$h5: (
+  size: 3rem,
+  lineHeight: 3.6rem,
+  sizeMob: 1.8rem,
+  lineHeightMob: 2.4rem,
+  sizeTab: 3rem,
+  lineHeightTab: 3.6rem,
+  tracking: 0.025em
+);
+$h6: (
+  size: 2.4rem,
+  lineHeight: 3rem,
+  sizeMob: 1.8rem,
+  lineHeightMob: 2.4rem,
+  sizeTab: 1.8rem,
+  lineHeightTab: 2.4rem,
+  tracking: 0.05em
+);
+
+$p-standard: (
+  size: 1.8rem,
+  lineHeight: 3.6rem,
+  sizeMob: 1.6rem,
+  lineHeightMob: 3rem,
+  sizeTab: 1.8rem,
+  lineHeightTab: 3.6rem,
+  tracking: 0.05em
+);
+$p-module: (
+  size: 1.6rem,
+  lineHeight: 3rem,
+  sizeMob: 1.4rem,
+  lineHeightMob: 3rem,
+  sizeTab: 1.6rem,
+  lineHeightTab: 3rem
+);
+$p-meta: (
+  size: 1.4rem,
+  lineHeight: 2.4rem,
+  tracking: 0.05em,
+  sizeMob: 1.2rem,
+  lineHeightMob: 2.4rem,
+  sizeTab: 1.4rem,
+  lineHeightTab: 2.4rem
+);
+
+//
+// COLOURS
+//
+
+$blue-1: #104870;
+$blue-2: #0074c8;
+$blue-3: #2f9eef;
+$blue-4: #d9eaf6;
+
+$test-blue: #246ca0;
+$test-blue-2: #245ba0;
+
+$blue-1-opa-1: rgba($blue-1, .1);
+$blue-3-opa-3: rgba($blue-3, .3);
+
+$green-1: #00585c;
+$green-2: #00a6ad;
+$green-3: #18cad2;
+$green-4: #01717B;
+
+$purple-1: #3d346c;
+$purple-2: #5342a9;
+$purple-3: #8573dd;
+
+$grey-light: #eff0f1;
+$grey-mid-light: #ccd4d9;
+$grey-mid: #9aa6af;
+$grey-dark: #1b1b1b;
+
+$white: #fff;
+$black: #1b1b1b;
+
+$white-opa-1: rgba($white, .1);
+$white-opa-2: rgba($white, .2);
+
+//
+// EASING
+//
+$cubic-ease-in: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+$cubic-ease-out: cubic-bezier(0.215, 0.61, 0.355, 1);
+
+//
+// GRIDS
+//
+$gutter-desktop: 36/69;
+$gutter-tablet: 1/5;
+$gutter-default: 1/4;
+
+$grids: (
+  desktop: (
+    columns: 12,
+    gutters: $gutter-desktop,
+    math: fluid,
+    output: float,
+    gutter-position: before,
+    spread: narrow
+  ),
+  tablet: (
+    columns: 6,
+    gutters: $gutter-tablet,
+    math: fluid,
+    output: float,
+    gutter-position: before,
+    spread: narrow
+  ),
+  default: (
+    columns: 4,
+    gutters: $gutter-default,
+    math: fluid,
+    output: float,
+    gutter-position: before,
+    spread: narrow
+  )
+);
+
+//
+// BREAKPOINTS
+//
+$breakpoint-map: (
+  "default": 320,
+  "tabletportrait": 768,
+  "tabletlandscape": 1024,
+  "desktop": 1025
+);
+
+$breakpoint-extras: (
+  "capwidth": 1560
+);
+
+//
+// Z-INDEX
+//
+
+$z-1: 1;
+$z-2: 10;
+$z-3: 100;
+$z-4: 1000;
+$z-index-link: 10000;
+$z-index-header: 10001;
+$z-index-modal: 20000;
+$z-index-gridguides: 30000;

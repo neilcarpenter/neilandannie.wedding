@@ -1,0 +1,39 @@
+@font-face {
+  font-family: 'Aileron';
+  src: url('../fonts/Aileron-Bold.eot');
+  src: url('../fonts/Aileron-Bold.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Aileron-Bold.woff2') format('woff2'),
+      url('../fonts/Aileron-Bold.woff') format('woff'),
+      url('../fonts/Aileron-Bold.ttf') format('truetype'),
+      url('../fonts/Aileron-Bold.svg#Aileron-Bold') format('svg');
+  font-style: normal;
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: 'Aileron';
+  src: url('../fonts/Aileron-Light.eot');
+  src: url('../fonts/Aileron-Light.eot?#iefix') format('embedded-opentype'),
+      url('../fonts/Aileron-Light.woff2') format('woff2'),
+      url('../fonts/Aileron-Light.woff') format('woff'),
+      url('../fonts/Aileron-Light.ttf') format('truetype'),
+      url('../fonts/Aileron-Light.svg#Aileron-Light') format('svg');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Mikro';
+  src: url('../fonts/Mikro-Light.woff2') format('woff2'),
+      url('../fonts/Mikro-Light.woff') format('woff');
+  font-style: normal;
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: 'Mikro';
+  src: url('../fonts/Mikro-Regular.woff2') format('woff2'),
+      url('../fonts/Mikro-Regular.woff') format('woff');
+  font-style: normal;
+  font-weight: 500;
+}

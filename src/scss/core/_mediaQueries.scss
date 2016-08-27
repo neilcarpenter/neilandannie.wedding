@@ -1,0 +1,20 @@
+@mixin update-state($point) {
+  @if map-has-key($breakpoint-map, $point) {
+    @media #{get-min-media-query($point)} {
+      font-family: "#{$point} breakpoint";
+    }
+  }
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$point}`. " + "Please make sure it is defined in `$breakpoint-map` map.";
+  }
+}
+
+.js-mediaqueries {
+  display: none;
+  font-family: "default breakpoint";
+
+  @each $b in $breakpoint-map {
+    // @media #{get-min-media-query(nth(
+    @include update-state(nth($b, 1));
+  }
+}

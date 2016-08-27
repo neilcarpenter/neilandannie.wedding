@@ -1,0 +1,70 @@
+.img-holder {
+  overflow: hidden;
+  position: relative;
+}
+
+.img-holder--16-9 {
+  padding-top: 56.25%;
+  width: 100%;
+}
+
+.img-holder--9-3 {
+  padding-top: 33%;
+  width: 100%;
+}
+
+.img-holder--1-1 {
+  padding-top: 100%;
+  width: 100%;
+}
+
+@include wider-than(tabletportrait) {
+  .md-img-holder--16-9 {
+    padding-top: 56.25%;
+    width: 100%;
+  }
+
+  .md-img-holder--9-3 {
+    padding-top: 33%;
+    width: 100%;
+  }
+
+  .md-img-holder--1-1 {
+    padding-top: 100%;
+    width: 100%;
+  }
+}
+
+.img--object-fit {
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+
+  .no-object-fit & {
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+    &.img--object-width {
+      height: auto;
+      width: 100%;
+    }
+
+    &.img--object-height {
+      height: 100%;
+      width: auto;
+    }
+  }
+}
+
+.img--object-contain {
+  height: 100%;
+  object-fit: contain;
+  object-position: center;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}

@@ -1,0 +1,38 @@
+@function strip-unit($number) {
+  @if type-of($number) == 'number' and not unitless($number) {
+    @return $number / ($number * 0 + 1);
+  }
+
+  @return $number;
+}
+
+@function px-to-em ($pixel) {
+  @return ($pixel / $font-size-root) + 'em'
+}
+
+@function get-breakpoint-width($breakpoint-name) {
+  @if map-has-key($breakpoint-map, $breakpoint-name) {
+    @return map-get($breakpoint-map, $breakpoint-name);
+  } @elseif map-has-key($breakpoint-extras, $breakpoint-name) {
+    @return map-get($breakpoint-extras, $breakpoint-name);
+  }
+
+  @warn("Breakpoint '#{$breakpoint-name}' was not found");
+  @return null;
+}
+
+@function get-min-media-query ($breakpoint-name) {
+  $px: get-breakpoint-width($breakpoint-name);
+  $em: px-to-em($px);
+  @return "screen and (min-width: #{$em})";
+}
+
+@function get-max-media-query ($breakpoint-name) {
+  $px: get-breakpoint-width($breakpoint-name) - 1;
+  $em: px-to-em($px);
+  @return "screen and (max-width: #{$em})";
+}
+
+@function to-vw($value: 0) {
+  @return ($value / 1%) * 1vw;
+}

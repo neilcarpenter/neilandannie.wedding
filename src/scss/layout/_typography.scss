@@ -1,0 +1,459 @@
+// "trick" to more reliably be able to work with rem values
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-size: $base-font-size;
+}
+
+%p-standard {
+  font-size: map-get($p-standard, sizeMob);
+  font-weight: $fw-aileron-light;
+  letter-spacing: map-get($p-standard, tracking);
+  line-height: map-get($p-standard, lineHeightMob);
+
+  strong,
+  b {
+    font-weight: $fw-aileron-bold;
+  }
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($p-standard, sizeTab);
+    line-height: map-get($p-standard, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($p-standard, size);
+    line-height: map-get($p-standard, lineHeight);
+  }
+}
+
+%p-module {
+  font-size: map-get($p-module, sizeMob);
+  line-height: map-get($p-module, lineHeightMob);
+
+  strong,
+  b {
+    font-weight: $fw-aileron-bold;
+  }
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($p-module, sizeTab);
+    line-height: map-get($p-module, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($p-module, size);
+    line-height: map-get($p-module, lineHeight);
+  }
+}
+
+p,
+.p--standard {
+  font-size: map-get($p-standard, sizeMob);
+  font-weight: $fw-aileron-light;
+  letter-spacing: map-get($p-standard, tracking);
+  line-height: map-get($p-standard, lineHeightMob);
+
+  strong,
+  b {
+    font-weight: $fw-aileron-bold;
+  }
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($p-standard, sizeTab);
+    line-height: map-get($p-standard, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($p-standard, size);
+    line-height: map-get($p-standard, lineHeight);
+  }
+}
+
+.p--module {
+  font-size: map-get($p-module, sizeMob);
+  line-height: map-get($p-module, lineHeightMob);
+
+  strong,
+  b {
+    font-weight: $fw-aileron-bold;
+  }
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($p-module, sizeTab);
+    line-height: map-get($p-module, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($p-module, size);
+    line-height: map-get($p-module, lineHeight);
+  }
+}
+
+.p--meta {
+  font-size: map-get($p-meta, sizeMob);
+  font-weight: $fw-aileron-bold;
+  line-height: map-get($p-meta, lineHeightMob);
+  letter-spacing: map-get($p-meta, tracking);
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($p-meta, sizeTab);
+    line-height: map-get($p-meta, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($p-meta, size);
+    line-height: map-get($p-meta, lineHeight);
+  }
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+  margin: 0;
+}
+
+.h1,
+.h2,
+.h3,
+.h4 {
+  font-family: $ff-mikro;
+  font-weight: $fw-mikro-light;
+}
+
+.h5,
+.h6 {
+  font-family: $ff-mikro;
+  font-weight: $fw-mikro-regular;
+}
+
+.h1 {
+  font-size: map-get($h1, sizeMob);
+  letter-spacing: map-get($h1, tracking);
+  line-height: map-get($h1, lineHeightMob);
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($h1, sizeTab);
+    letter-spacing: map-get($h1, tracking);
+    line-height: map-get($h1, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($h1, size);
+    letter-spacing: map-get($h1, tracking);
+    line-height: map-get($h1, lineHeight);
+  }
+}
+
+.h2 {
+  font-size: map-get($h2, sizeMob);
+  letter-spacing: map-get($h2, tracking);
+  line-height: map-get($h2, lineHeightMob);
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($h2, sizeTab);
+    letter-spacing: map-get($h2, tracking);
+    line-height: map-get($h2, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($h2, size);
+    letter-spacing: map-get($h2, tracking);
+    line-height: map-get($h2, lineHeight);
+  }
+}
+
+.h3 {
+  font-size: map-get($h3, sizeMob);
+  letter-spacing: map-get($h3, tracking);
+  line-height: map-get($h3, lineHeightMob);
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($h3, sizeTab);
+    letter-spacing: map-get($h3, tracking);
+    line-height: map-get($h3, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($h3, size);
+    letter-spacing: map-get($h3, tracking);
+    line-height: map-get($h3, lineHeight);
+  }
+}
+
+.h4 {
+  font-size: map-get($h4, sizeMob);
+  letter-spacing: map-get($h4, tracking);
+  line-height: map-get($h4, lineHeightMob);
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($h4, sizeTab);
+    letter-spacing: map-get($h4, tracking);
+    line-height: map-get($h4, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($h4, size);
+    letter-spacing: map-get($h4, tracking);
+    line-height: map-get($h4, lineHeight);
+  }
+}
+
+.h5 {
+  font-size: map-get($h5, sizeMob);
+  letter-spacing: map-get($h5, tracking);
+  line-height: map-get($h5, lineHeightMob);
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($h5, sizeTab);
+    letter-spacing: map-get($h5, tracking);
+    line-height: map-get($h5, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($h5, size);
+    letter-spacing: map-get($h5, tracking);
+    line-height: map-get($h5, lineHeight);
+  }
+}
+
+.h6 {
+  font-size: map-get($h6, sizeMob);
+  letter-spacing: map-get($h6, tracking);
+  line-height: map-get($h6, lineHeightMob);
+
+  @include wider-than('tabletportrait') {
+    font-size: map-get($h6, sizeTab);
+    letter-spacing: map-get($h6, tracking);
+    line-height: map-get($h6, lineHeightTab);
+  }
+
+  @include wider-than('desktop') {
+    font-size: map-get($h6, size);
+    letter-spacing: map-get($h6, tracking);
+    line-height: map-get($h6, lineHeight);
+  }
+}
+
+//
+// The scoped type scale within the following media queries
+// is to enable us to override breakpoint-specific type scales.
+// Basically so that we across breakpoints can lock a specific type size.
+//
+@include wider-than(tabletportrait) {
+  .md-h1,
+  .md-h2,
+  .md-h3,
+  .md-h4 {
+    font-weight: $fw-mikro-light;
+  }
+  .md-h1 {
+    font-size: map-get($h1, size);
+    letter-spacing: map-get($h1, tracking);
+    line-height: map-get($h1, lineHeight);
+  }
+
+  .md-h2 {
+    font-size: map-get($h2, sizeTab);
+    letter-spacing: map-get($h2, tracking);
+    line-height: map-get($h2, lineHeightTab);
+  }
+
+  .md-h3 {
+    font-size: map-get($h3, sizeTab);
+    letter-spacing: map-get($h3, tracking);
+    line-height: map-get($h3, lineHeightTab);
+  }
+
+  .md-h4 {
+    font-size: map-get($h4, sizeTab);
+    letter-spacing: map-get($h4, tracking);
+    line-height: map-get($h4, lineHeightTab);
+  }
+
+  .md-h5 {
+    font-size: map-get($h5, sizeTab);
+    letter-spacing: map-get($h5, tracking);
+    line-height: map-get($h5, lineHeightTab);
+  }
+
+  .md-h6 {
+    font-size: map-get($h6, sizeTab);
+    letter-spacing: map-get($h6, tracking);
+    line-height: map-get($h6, lineHeightTab);
+  }
+}
+
+@include wider-than(desktop) {
+  .lg-h1,
+  .lg-h2,
+  .lg-h3,
+  .lg-h4 {
+    font-weight: $fw-mikro-light;
+  }
+
+  .lg-h1 {
+    font-size: map-get($h1, size);
+    letter-spacing: map-get($h1, tracking);
+    line-height: map-get($h1, lineHeight);
+  }
+
+  .lg-h2 {
+    font-size: map-get($h2, size);
+    letter-spacing: map-get($h2, tracking);
+    line-height: map-get($h2, lineHeight);
+  }
+
+  .lg-h3 {
+    font-size: map-get($h3, size);
+    letter-spacing: map-get($h3, tracking);
+    line-height: map-get($h3, lineHeight);
+  }
+
+  .lg-h4 {
+    font-size: map-get($h4, size);
+    letter-spacing: map-get($h4, tracking);
+    line-height: map-get($h4, lineHeight);
+  }
+
+  .lg-h5 {
+    font-size: map-get($h5, size);
+    letter-spacing: map-get($h5, tracking);
+    line-height: map-get($h5, lineHeight);
+  }
+
+  .lg-h6 {
+    font-size: map-get($h6, size);
+    letter-spacing: map-get($h6, tracking);
+    line-height: map-get($h6, lineHeight);
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.rich-text {
+  @extend %p-standard;
+
+  .p--module & {
+    p {
+      @extend %p-module;
+    }
+  }
+
+  *:not(.faq-list--item-answer) & {
+    p {
+      color: $black;
+    }
+  }
+
+  .faq-list--item-answer & {
+    p {
+      color: currentColor;
+    }
+  }
+
+  p:first-child,
+  h2:first-child,
+  h3:first-child,
+  h4:first-child,
+  h5:first-child {
+    margin-top: 0;
+  }
+
+  p:empty {
+    display: none;
+  }
+
+  h2 {
+    @extend .h2;
+    color: $black;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  h3 {
+    @extend .h3;
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+
+  h4 {
+    @extend .h4;
+    margin-top: 2.4rem;
+    margin-bottom: 2.4rem;
+  }
+
+  h5 {
+    @extend .h5;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  h3, h4, h5 {
+    color: currentColor;
+  }
+
+  a {
+    @extend .underline;
+
+    font-weight: $fw-aileron-bold;
+  }
+
+  ul,
+  ol {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 36px;
+
+    li {
+      color: $black;
+      position: relative;
+    }
+  }
+
+  ul {
+    li {
+      &:before {
+        background-color: $blue-3;
+        border-radius: 100%;
+        content: '';
+        left: -36px;
+        position: absolute;
+        top: 12px;
+        height: 12px;
+        width: 12px;
+      }
+    }
+  }
+
+  ol {
+    li {
+      counter-increment: step-counter;
+
+      &:before {
+        color: $blue-3;
+        content: counter(step-counter);
+        font-family: $ff-aileron;
+        font-weight: $fw-aileron-bold;
+        left: -36px;
+        position: absolute;
+      }
+    }
+  }
+
+  hr {
+    border: 1px solid currentColor;
+    margin: 1rem 0;
+  }
+}

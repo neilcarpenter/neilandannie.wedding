@@ -1,0 +1,10 @@
+**/.git/**
+
+**/docs/**
+**/gulp/**
+**/node_modules/**
+**/script/**
+
+app/build/
+src/
+!src/**/*.tmpl.js

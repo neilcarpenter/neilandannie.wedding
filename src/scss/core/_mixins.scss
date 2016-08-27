@@ -1,0 +1,40 @@
+@mixin wider-than ($media) {
+  @each $breakpoint-name, $pixel-width in $breakpoint-map {
+    @if $media == $breakpoint-name {
+      @media #{get-min-media-query($media)} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin narrower-than ($media) {
+  @each $breakpoint-name, $pixel-width in $breakpoint-map {
+    @if $media == $breakpoint-name {
+      @media #{get-max-media-query($media)} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin capwidth {
+  $media: capwidth;
+
+  @media #{get-min-media-query($media)} {
+    @content;
+  }
+}
+
+@mixin between ($min, $max) {
+  $min-px: map-get($breakpoint-map, $min);
+  $max-px: map-get($breakpoint-map, $max) - 1;
+
+  @media screen and (min-width: #{px-to-em($min-px)}) and (max-width: #{px-to-em($max-px)}) {
+    @content;
+  }
+}
+
+@function em($px, $base: 16px) {
+  @return ($px / $base) * 1em;
+}
