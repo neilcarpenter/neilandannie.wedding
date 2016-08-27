@@ -2,3 +2,4 @@
 node_modules
 app/build/
 rev-manifest.json
+dploy.yaml
