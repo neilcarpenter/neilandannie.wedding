@@ -1,9 +1,13 @@
 import AbstractViewPage from 'views/abstract/AbstractViewPage'
 
+import FormEmbed from 'views/components/FormEmbed'
+
 const RsvpPage = AbstractViewPage.extend({
   page: 'rsvp',
 
-  modules: [],
+  modules: [
+    FormEmbed
+  ],
 
   constructor(config = {}) {
     RsvpPage.__super__.constructor.call(this, config)

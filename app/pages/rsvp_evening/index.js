@@ -7,7 +7,8 @@ export function getPageHtml (version) {
   return getPageMarkup({
     title: 'RSVP evening page',
     pageContent: compileTemplate('pages/Rsvp', {
-      version
+      version,
+      form: compileTemplate('components/FormEmbed', { version: 2 })
     }),
     version
   })
