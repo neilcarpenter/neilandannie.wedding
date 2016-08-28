@@ -5,8 +5,6 @@ const AbstractViewPage = AbstractView.extend({
 
   autobindOnInstantiation: false,
 
-  _shown: false,
-
   _pageUrl: null,
   _title: null,
 
@@ -20,18 +18,12 @@ const AbstractViewPage = AbstractView.extend({
   },
 
   show(cb) {
-    if (this._shown) return
-    this._shown = true
-
     ViewAutoBinder.bindView(this)
 
     if (cb && typeof cb === 'function') cb()
   },
 
   hide(cb) {
-    if (!this._shown) return
-    this._shown = false
-
     this.el.classList.add('is-animating-out')
 
     setTimeout(() => {

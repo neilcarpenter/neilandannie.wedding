@@ -199,7 +199,6 @@ const Wrapper = AbstractView.extend({
       })
     })
   }
-
 })
 
 export default assign(Wrapper, Singleton)
