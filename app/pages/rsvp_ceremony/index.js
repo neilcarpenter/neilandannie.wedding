@@ -5,7 +5,7 @@ export function getPageHtml (version) {
   version = version || 1
 
   return getPageMarkup({
-    title: 'RSVP evening page',
+    title: 'RSVP ceremony page',
     pageContent: compileTemplate('pages/Rsvp', {
       version
     }),
@@ -13,8 +13,8 @@ export function getPageHtml (version) {
   })
 }
 
-function rsvpEvening (req, res) {
+function rsvpCeremony (req, res) {
   return res.send(getPageHtml(req.params.version))
 }
 
-export default rsvpEvening
+export default rsvpCeremony

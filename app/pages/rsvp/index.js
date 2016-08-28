@@ -1,14 +1,16 @@
 import compileTemplate from '../../utils/templateCompiler'
 import getPageMarkup from '../../utils/getPageMarkup'
 
+import content from './content.tmpl'
+
 export function getPageHtml (version) {
   version = version || 1
 
   return getPageMarkup({
     title: 'RSVP page',
-    pageContent: compileTemplate('pages/Rsvp', {
+    pageContent: compileTemplate('pages/General', {
       version,
-      test: compileTemplate('components/Test', { version })
+      content
     }),
     version
   })

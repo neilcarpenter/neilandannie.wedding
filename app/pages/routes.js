@@ -1,15 +1,30 @@
-import appConfig from '../config/app'
-
-import home from './home'
-import about from './about'
-import rsvp from './rsvp'
-import rsvpEvening from './rsvp_evening'
+import fs from 'fs'
 
 const version = ':version([0-9]{1,})?'
 
+function getHandlers () {
+  return fs
+    .readdirSync(__dirname)
+    .filter(name => fs.statSync(`${__dirname}/${name}`).isDirectory())
+    .map(dir => {
+      const route = dir === 'home' ? '' : `${dir.replace(/_/g, '/')}/`
+      const callback = require(`./${dir}`).default
+      return { route, callback }
+    })
+    .sort((handlerA, handlerB) => {
+      const handlerALen = handlerA.route.split('/').length
+      const handlerBLen = handlerB.route.split('/').length
+      if (handlerALen === handlerBLen) {
+        return 0
+      } else {
+        return (handlerALen < handlerBLen) ? 1 : -1
+      }
+    })
+}
+
 export default function (app) {
-  app.get(`/rsvp/evening/:version?`, rsvpEvening)
-  app.get(`/rsvp/:version?`, rsvp)
-  app.get(`/about/:version?`, about)
-  app.get(`/:version?`, home)
+  const handlers = getHandlers()
+  handlers.forEach(handler => {
+    app.get(`/${handler.route}${version}`, handler.callback)
+  })
 }

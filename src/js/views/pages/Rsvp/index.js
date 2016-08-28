@@ -1,13 +1,9 @@
 import AbstractViewPage from 'views/abstract/AbstractViewPage'
 
-import Test from 'views/components/Test'
-
 const RsvpPage = AbstractViewPage.extend({
   page: 'rsvp',
 
-  modules: [
-    Test
-  ],
+  modules: [],
 
   constructor(config = {}) {
     RsvpPage.__super__.constructor.call(this, config)

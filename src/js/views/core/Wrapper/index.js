@@ -9,19 +9,19 @@ import Constants from 'common/Constants'
 import UrlHelper from 'common/UrlHelper'
 import Analytics from 'common/Analytics'
 
+import General from 'views/pages/General'
 import Home from 'views/pages/Home'
-import About from 'views/pages/About'
+import Gallery from 'views/pages/Gallery'
 import Rsvp from 'views/pages/Rsvp'
-import RsvpEvening from 'views/pages/RsvpEvening'
 
 const Wrapper = AbstractView.extend({
   template: 'wrapper',
 
   pages: [
+    General,
     Home,
-    About,
-    Rsvp,
-    RsvpEvening
+    Gallery,
+    Rsvp
   ],
 
   activePageRequest: null,

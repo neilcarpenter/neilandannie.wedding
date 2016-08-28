@@ -20,8 +20,10 @@
   "scripts": {
     "start": "forever --watch app/start.js",
     "start:dev": "forever restart app/start.js || forever start app/start.js",
-    "deploy": ". ~/.nvm/nvm.sh && nvm use && gulp build --production && node script/_run.js generateStaticMarkup && dploy live",
-    "deploy:dev": ". ~/.nvm/nvm.sh && nvm use && gulp build && node script/_run.js generateStaticMarkup && dploy dev"
+    "build": ". ~/.nvm/nvm.sh && nvm use && gulp build --production && node script/_run.js generateStaticMarkup",
+    "build:dev": ". ~/.nvm/nvm.sh && nvm use && gulp build && node script/_run.js generateStaticMarkup",
+    "deploy": "npm run build && dploy live",
+    "deploy:dev": "npm run build:dev && dploy dev"
   },
   "folders": {
     "dest": "app/build/assets",
