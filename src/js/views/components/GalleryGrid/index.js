@@ -42,12 +42,12 @@ const GalleryGrid = AbstractView.extend({
     // const colour = COLOURS[ random(0, (COLOURS.length - 1)) ]
     // const colour = COLOURS[ index % 5 ]
     const colour = 'one'
-    const row = Math.floor(index / 7) % 2 !== 0 ? 'even' : 'odd'
+    // const row = Math.floor(index / 7) % 2 !== 0 ? 'even' : 'odd'
 
     const item = document.createElement('div')
     item.classList.add('gallery-grid--item')
     item.classList.add(`colour--${colour}`)
-    item.classList.add(`row--${row}`)
+    item.classList.add('hide')
 
     const itemInner = document.createElement('div')
     itemInner.classList.add('gallery-grid--item-inner')
@@ -64,6 +64,11 @@ const GalleryGrid = AbstractView.extend({
     item.appendChild(itemInner)
     itemInner.appendChild(image)
     this.gridInner.appendChild(item)
+
+    setTimeout(() => {
+      item.classList.remove('hide')
+    }, index * 150 - (Math.floor(index / 7) * 900))
+    // }, random(300, 1500))
   }
 })
 
