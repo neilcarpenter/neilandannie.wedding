@@ -75,6 +75,7 @@ function getPageMarkup (vars = {}) {
     pageContent: vars.pageContent
   })
   htmlVars.header = getHeader(vars.version)
+  htmlVars.galleryGrid = compileTemplate('components/GalleryGrid', { version: 1 })
   htmlVars.svgSymbols = svgSymbols
 
   return htmlTmpl(htmlVars)

@@ -53,6 +53,7 @@ export default `
     data-app-model='<%= JSON.stringify(config) %>'>
     <%= header %>
     <%= main %>
+    <%= galleryGrid %>
   </div>
   <script src="/assets/<%= assets.jsMain %>"></script>
   <script>

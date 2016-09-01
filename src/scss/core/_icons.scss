@@ -1,0 +1,8 @@
+.icon {
+  display: inline-block;
+
+  &.icon-logo {
+    width: #{197 * 2.5}px;
+    height: #{154 * 2.5}px;
+  }
+}

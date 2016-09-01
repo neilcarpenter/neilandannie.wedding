@@ -7,8 +7,7 @@ export function getPageHtml (version) {
   return getPageMarkup({
     title: 'Homepage',
     pageContent: compileTemplate('pages/Home', {
-      version,
-      test: compileTemplate('components/Test', { version })
+      version
     }),
     version
   })

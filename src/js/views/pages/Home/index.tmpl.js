@@ -1,6 +1,8 @@
 export default `
   <div class="page page-home" data-naaw-page="home">
-    <i>I am home</i>
-    <%= test %>
+    <svg class="icon icon-logo">
+        <title>logo</title>
+        <use xlink:href="#logo"></use>
+    </svg>
   </div>
 `

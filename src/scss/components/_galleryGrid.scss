@@ -1,0 +1,88 @@
+.gallery-grid {
+  overflow: hidden;
+}
+
+.gallery-grid--inner {
+  width: 120%;
+  left: -10%;
+  position: relative;
+}
+
+.gallery-grid--item {
+  cursor: pointer;
+  float: left;
+  width: #{16.66666 * 1}vw;
+  height: #{16.66666 * 1}vw;
+  position: relative;
+  opacity: 1;
+  transition: all .3s ease-in-out;
+
+  // &.row--even {
+
+  //   img {
+  //     transform: skewX(-5deg) scale(1.1);
+  //   }
+  // }
+
+  .no-touchevents & {
+
+    &:hover {
+      transform: scale(0.95);
+
+      img {
+        // mix-blend-mode: normal;
+        filter: sepia(0.3) brightness(1.2);
+        transform: skew(5deg) scale(1.3);
+      }
+    }
+  }
+
+  img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: skewX(5deg) scale(1.1);
+    transition: all .3s ease-in-out;
+
+    mix-blend-mode: hard-light;
+    filter: sepia(0.3) brightness(0.3);
+    opacity: 1;
+  }
+}
+
+.gallery-grid--item-inner {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transform: skewX(-5deg);
+  overflow: hidden;
+
+  .row--even & {
+    // transform: skewX(5deg);
+  }
+
+  .colour--one & {
+    background: $colour--one;
+  }
+
+  .colour--two & {
+    background: $colour--two;
+  }
+
+  .colour--three & {
+    background: $colour--three;
+  }
+
+  .colour--four & {
+    background: $colour--four;
+  }
+
+  .colour--five & {
+    background: $colour--five;
+  }
+}

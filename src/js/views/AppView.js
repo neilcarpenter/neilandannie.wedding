@@ -16,6 +16,7 @@ import TimestampManager from 'common/TimestampManager'
 
 import Header from 'views/core/Header'
 import Wrapper from 'views/core/Wrapper'
+import GalleryGrid from 'views/components/GalleryGrid'
 
 import { closest } from 'utils/DOM'
 
@@ -58,10 +59,12 @@ const AppView = AbstractView.extend({
 
     this.header = Header.getInstance()
     this.wrapper = Wrapper.getInstance()
+    this.galleryGrid = new GalleryGrid()
 
     this
       .addChild(this.header)
       .addChild(this.wrapper)
+      .addChild(this.galleryGrid)
 
     this.scrollItemInView = ScrollItemInView.getInstance({ appView: this })
     this.timestampManager = TimestampManager.getInstance({ appView: this })

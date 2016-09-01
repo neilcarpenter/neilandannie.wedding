@@ -98,6 +98,7 @@
     "lodash.merge": "^4.5.0",
     "lodash.pick": "^4.2.1",
     "lodash.random": "^3.1.7",
+    "lodash.shuffle": "^4.2.0",
     "lodash.template": "^4.2.5",
     "lodash.throttle": "^4.0.1",
     "lodash.uniqueid": "^4.0.0",
