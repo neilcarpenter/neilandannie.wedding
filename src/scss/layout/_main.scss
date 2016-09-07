@@ -5,6 +5,9 @@ body {
   font-kerning: normal;
   font-variant: none;
   text-rendering: geometricPosition;
+  font-family: $ff-muli;
+
+  background: #fdf1f1;
 }
 
 @media screen and (min-resolution: 2dppx) {

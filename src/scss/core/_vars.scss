@@ -2,6 +2,9 @@
 // FONT FAMILIES
 //
 
+$ff-amatica: 'Amatica SC', cursive;
+$ff-muli: 'Muli', sans-serif;
+
 $ff-aileron: 'Aileron', Helvetica, Arial, sans-serif;
 $ff-mikro: 'Mikro', Helvetica, Arial, sans-serif;
 
@@ -76,8 +79,8 @@ $h6: (
 );
 
 $p-standard: (
-  size: 1.8rem,
-  lineHeight: 3.6rem,
+  size: 1.5rem,
+  lineHeight: 1.6,
   sizeMob: 1.6rem,
   lineHeightMob: 3rem,
   sizeTab: 1.8rem,
@@ -200,7 +203,6 @@ $breakpoint-extras: (
 //
 // Z-INDEX
 //
-
 $z-1: 1;
 $z-2: 10;
 $z-3: 100;
@@ -209,3 +211,8 @@ $z-index-link: 10000;
 $z-index-header: 10001;
 $z-index-modal: 20000;
 $z-index-gridguides: 30000;
+
+//
+// LAYOUT
+//
+$header--height-large: 100px;

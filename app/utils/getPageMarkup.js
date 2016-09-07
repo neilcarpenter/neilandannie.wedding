@@ -50,7 +50,8 @@ function _getHtmlVars (vars = {}) {
       baseUrl: '', // TEMP
       homePath: appConfig.homePath,
       routeBlacklist: []
-    }
+    },
+    isHome: vars.isHome
   }
 
   const htmlVars = pick(vars, Object.keys(htmlDefaults))
@@ -58,10 +59,9 @@ function _getHtmlVars (vars = {}) {
   return defaults(htmlVars, htmlDefaults)
 }
 
-function getHeader (version, isHome) {
+function getHeader (version) {
   const logoSvg = fs.readFileSync(path.resolve(__dirname, '../build/assets/img/logos/logo.svg'))
   const header = compileTemplate('core/Header', {
-    isHome,
     logoSvg,
     version
   })
@@ -77,7 +77,7 @@ function getPageMarkup (vars = {}) {
   htmlVars.main = compileTemplate('core/Wrapper', {
     pageContent: vars.pageContent
   })
-  htmlVars.header = getHeader(vars.version, vars.isHome)
+  htmlVars.header = getHeader(vars.version)
   htmlVars.galleryGrid = compileTemplate('components/GalleryGrid', { version: 1 })
   htmlVars.svgSymbols = svgSymbols
 

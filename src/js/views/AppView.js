@@ -17,6 +17,7 @@ import TimestampManager from 'common/TimestampManager'
 import Header from 'views/core/Header'
 import Wrapper from 'views/core/Wrapper'
 import GalleryGrid from 'views/components/GalleryGrid'
+import HomeView from 'views/pages/Home'
 
 import { closest } from 'utils/DOM'
 
@@ -126,7 +127,9 @@ const AppView = AbstractView.extend({
 
   onPageOrAnchorChange() {},
 
-  onViewChangeComplete() {},
+  onViewChangeComplete() {
+    this.checkForHomepage()
+  },
 
   onScroll(e) {
     this.lastScrollY = window.pageYOffset
@@ -203,6 +206,11 @@ const AppView = AbstractView.extend({
 
   getWindowHeight() {
     return window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+  },
+
+  checkForHomepage () {
+    const classChange = this.wrapper.currentView instanceof HomeView ? 'add' : 'remove'
+    this.el.classList[classChange]('is-home')
   }
 })
 

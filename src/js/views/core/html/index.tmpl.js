@@ -34,6 +34,8 @@ export default `
   <meta name="twitter:image:width"  content="">
   <meta name="twitter:image:height" content="">
 
+  <link href="https://fonts.googleapis.com/css?family=Amatica+SC:400,700|Muli:400,400i" rel="stylesheet">
+
   <link rel="stylesheet" href="/assets/<%= assets.cssMain %>">
 
   <script src="/assets/<%= assets.jsModernizr %>"></script>
@@ -50,7 +52,8 @@ export default `
   <div
     data-naaw-app
     data-naaw-tmpl='naaw-app'
-    data-app-model='<%= JSON.stringify(config) %>'>
+    data-app-model='<%= JSON.stringify(config) %>'
+    class="<%= isHome ? 'is-home' : '' %>">
     <%= header %>
     <%= main %>
     <%= galleryGrid %>

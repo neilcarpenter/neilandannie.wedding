@@ -5,7 +5,6 @@ import throttle from 'lodash.throttle'
 import debounce from 'lodash.debounce'
 
 import AppView from 'views/AppView'
-import HomeView from 'views/pages/Home'
 import AppRouter from 'router/AppRouter'
 import AppModel from 'models/AppModel'
 import Channel from 'common/Channel'
@@ -30,7 +29,7 @@ const Header = AbstractView.extend({
 
   _bindClassMethods() {
     this.onScroll = this.onScroll.bind(this)
-    this.onResize = debounce(this.onResize.bind(this), Constants.RESZIE_DEBOUNCE)
+    this.onResize = debounce(this.onResize.bind(this), Constants.RESIZE_DEBOUNCE)
     this.onHashChanged = this.onHashChanged.bind(this)
     this.onChangeViewStart = this.onChangeViewStart.bind(this)
     this.onChangeViewEnd = this.onChangeViewEnd.bind(this)
@@ -68,19 +67,11 @@ const Header = AbstractView.extend({
     window.scrollTo(0, 0)
   },
 
-  onChangeViewEnd() {
-    this.checkForHomepage()
-  },
+  onChangeViewEnd() {},
 
   onGlobalLoadingShow() {},
 
-  onGlobalLoadingHide() {},
-
-  checkForHomepage () {
-    const appView = AppView.getInstance()
-    const classChange = appView.wrapper.currentView instanceof HomeView ? 'add' : 'remove'
-    this.el.classList[classChange]('is-home')
-  }
+  onGlobalLoadingHide() {}
 })
 
 export default assign(Header, Singleton)

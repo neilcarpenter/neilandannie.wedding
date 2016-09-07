@@ -1,8 +1,5 @@
-$header--height-large: 100px;
-
 .header {
-  position: absolute;
-  background: red;
+  position: fixed;
   z-index: $z-index-header;
   width: 100%;
   top: 0;
@@ -10,17 +7,6 @@ $header--height-large: 100px;
   height: $header--height-large;
 
   // display: none;
-
-  &.is-home {
-
-    .header--logo {
-      width: #{197 * 2.5}px;
-      height: #{154 * 2.5}px;
-      top: 50%;
-      left: 50%;
-      pointer-events: none;
-    }
-  }
 }
 
 .header--logo {
@@ -34,6 +20,14 @@ $header--height-large: 100px;
   margin: 0;
   transition: all .3s ease-in-out;
 
+  .is-home & {
+    width: #{197 * 2.5}px;
+    height: #{154 * 2.5}px;
+    top: 50%;
+    left: 50%;
+    pointer-events: none;
+  }
+
   svg {
     width: 100%;
     height: 100%;
@@ -42,12 +36,34 @@ $header--height-large: 100px;
 
 .header--nav {
   position: absolute;
+  top: 46%;
+  left: 66%;
+  width: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  transition: all .3s ease-in-out;
+
+  .is-home & {
+    left: 50%;
+  }
 
   li {
-    float: left;
+    display: inline-block;
   }
 }
 
 .header--nav-item {
+  text-decoration: none;
+  color: $black;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
+  margin-right: 20px;
+  font-family: $ff-amatica;
+  font-size: 2.5rem;
+  font-weight: 700;
+  transition: all .3s ease-in-out;
 
+  .is-home & {
+    color: $white;
+    border-color: transparent;
+  }
 }

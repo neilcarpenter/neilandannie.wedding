@@ -1,6 +1,6 @@
 export default `
   <header
-    class="header <%= isHome ? 'is-home' : '' %>"
+    class="header"
     role="banner"
     data-naaw-tmpl="header">
     <h1 class="header--logo">
@@ -10,7 +10,7 @@ export default `
     </h1>
     <nav class="header--nav">
       <ul class="unstyled">
-        <li><a class="header--nav-item" href="/">home</a></li>
+        <!-- <li><a class="header--nav-item" href="/">home</a></li> -->
         <li><a class="header--nav-item" href="/about">about</a></li>
         <li><a class="header--nav-item" href="/when-where">when & where</a></li>
         <li><a class="header--nav-item" href="/places-to-stay">places to stay</a></li>
