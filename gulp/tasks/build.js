@@ -8,7 +8,7 @@ gulp.task('build', () => {
 
   const args = [
     'unrevAssets',
-    [ 'browserify', 'scss', 'vendor', 'images', 'icons', 'fonts' ]
+    [ 'browserify', 'scss', 'vendor', 'images', 'icons', 'appIcons', 'fonts' ]
   ]
 
   if (!global.isWatching && global.isProduction) {

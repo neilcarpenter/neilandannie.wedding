@@ -11,12 +11,12 @@ export default `
   <meta name="author" content="">
   <meta name="viewport" content="initial-scale=1.0, width=device-width">
 
-  <link rel="shortcut icon" href="/appIcons/favicon.png" type="image/x-icon" />
-  <link rel="apple-touch-icon" href="/appIcons/apple-touch-icon.png" />
-  <link rel="apple-touch-icon" sizes="80x80" href="/appIcons/apple-touch-icon-80x80.png" />
-  <link rel="apple-touch-icon" sizes="120x120" href="/appIcons/apple-touch-icon-120x120.png" />
-  <link rel="apple-touch-icon" sizes="152x152" href="/appIcons/apple-touch-icon-152x152.png" />
-  <link rel="apple-touch-icon" sizes="167x167" href="/appIcons/apple-touch-icon-167x167.png" />
+  <link rel="shortcut icon" href="/assets/appIcons/favicon.png" type="image/x-icon" />
+  <link rel="apple-touch-icon" href="/assets/appIcons/apple-touch-icon.png" />
+  <link rel="apple-touch-icon" sizes="80x80" href="/assets/appIcons/apple-touch-icon-80x80.png" />
+  <link rel="apple-touch-icon" sizes="120x120" href="/assets/appIcons/apple-touch-icon-120x120.png" />
+  <link rel="apple-touch-icon" sizes="152x152" href="/assets/appIcons/apple-touch-icon-152x152.png" />
+  <link rel="apple-touch-icon" sizes="167x167" href="/assets/appIcons/apple-touch-icon-167x167.png" />
 
   <meta property="og:title"         content="">
   <meta property="og:url"           content="">
@@ -35,7 +35,6 @@ export default `
   <meta name="twitter:image:height" content="">
 
   <link href="https://fonts.googleapis.com/css?family=Amatica+SC:400,700|Muli:400,400i" rel="stylesheet">
-
   <link rel="stylesheet" href="/assets/<%= assets.cssMain %>">
 
   <script src="/assets/<%= assets.jsModernizr %>"></script>
