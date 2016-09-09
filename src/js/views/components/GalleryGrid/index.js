@@ -102,7 +102,7 @@ const GalleryGrid = AbstractView.extend({
 
     // if (Math.random() > 0.75) {
     // if (((index % 7) / 7) < 0.3) {
-    if (index % 7 < 3 || index % 7 > 5 || isHome) {
+    if ((index % 7 < 3 || index % 7 > 5) && (Math.floor(index / 7) > 0 || index % 7 < 3) || isHome) {
 
       if (index === 0 || Math.random() > 0.333 || isHome) {
         setTimeout(() => {
