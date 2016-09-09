@@ -18,6 +18,8 @@ const AbstractViewPage = AbstractView.extend({
   },
 
   show(cb) {
+    this.el.classList.add('is-animating-in')
+
     ViewAutoBinder.bindView(this)
 
     if (cb && typeof cb === 'function') cb()
