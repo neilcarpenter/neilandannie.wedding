@@ -2,9 +2,17 @@ import compileTemplate from '../../utils/templateCompiler'
 import getPageMarkup from '../../utils/getPageMarkup'
 
 import content from './content.tmpl'
+import { wedding } from '../../gridContent'
 
 export function getPageHtml (version) {
   version = version || 1
+
+  const gridContent = {
+    _keys: [ wedding.label ],
+    data: [
+      wedding
+    ]
+  }
 
   return getPageMarkup({
     title: 'When and where page',
@@ -12,6 +20,7 @@ export function getPageHtml (version) {
       version,
       content
     }),
+    gridContent,
     version
   })
 }

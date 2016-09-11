@@ -1,8 +1,18 @@
 import compileTemplate from '../../utils/templateCompiler'
 import getPageMarkup from '../../utils/getPageMarkup'
 
+import { neilAndAnnie, wedding } from '../../gridContent'
+
 export function getPageHtml (version) {
   version = version || 1
+
+  const gridContent = {
+    _keys: [ neilAndAnnie.label, wedding.label ],
+    data: [
+      neilAndAnnie,
+      wedding
+    ]
+  }
 
   return getPageMarkup({
     title: 'RSVP ceremony page',
@@ -10,6 +20,7 @@ export function getPageHtml (version) {
       version,
       form: compileTemplate('components/FormEmbed', { version: 1 })
     }),
+    gridContent,
     version
   })
 }

@@ -2,6 +2,7 @@ import assign from 'lodash.assign'
 
 import AbstractView from 'views/abstract/AbstractView'
 import AppRouter from 'router/AppRouter'
+import GridContentModel from 'models/GridContentModel'
 import PageModel, { getPagePartials } from 'models/PageModel'
 import Singleton from 'common/Singleton'
 import Channel from 'common/Channel'
@@ -96,6 +97,8 @@ const Wrapper = AbstractView.extend({
     const pageUrl = UrlHelper.getFullPathFromRouteObject(current)
     const title = document.title
     const description = document.querySelector('meta[name="description"]') ? document.querySelector('meta[name="description"]').getAttribute('content') : null
+    const gridContent = JSON.parse(document.querySelector('[data-grid-content]').getAttribute('data-grid-content'))
+
     const pageModel = new PageModel({
       document,
       page,
@@ -103,7 +106,8 @@ const Wrapper = AbstractView.extend({
       pageType,
       pageUrl,
       title,
-      description
+      description,
+      gridContent
     })
 
     this.activePageModel = pageModel
@@ -131,6 +135,9 @@ const Wrapper = AbstractView.extend({
 
   changeView(pageModel) {
     this.previousView = this.currentView
+
+    const gridContentModel = GridContentModel.getInstance()
+    gridContentModel.updateContent(pageModel.get('gridContent'))
 
     const NewView = this.getViewByPageType(pageModel.get('pageType'))
     const el = pageModel.get('page')

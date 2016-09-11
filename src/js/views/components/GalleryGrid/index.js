@@ -2,6 +2,8 @@ import random from 'lodash.random'
 import shuffle from 'lodash.shuffle'
 
 import AppRouter from 'router/AppRouter'
+import AppView from 'views/AppView'
+import GridContentModel from 'models/GridContentModel'
 import Channel from 'common/Channel'
 import Constants from 'common/Constants'
 
@@ -54,7 +56,17 @@ const GalleryGrid = AbstractView.extend({
 
   buildGrid() {
     const appRouter = AppRouter.getInstance()
+    const appView = AppView.getInstance()
+    const gridContentModel = GridContentModel.getInstance()
+
     const isHome = !appRouter.current.route
+    const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
+    const gridContent = gridContentModel.getPageContent(gridContentKeys)
+
+    console.log('\n')
+    console.log('gridContent')
+    console.log(gridContent)
+    console.log('\n')
 
     for (let i = 0; i < 100; i++) {
       this.addGridItem(i, isHome)

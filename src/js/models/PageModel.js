@@ -38,7 +38,8 @@ const PageModel = Model.extend({
     pageUrl: 'string',
     pagePartials: 'object',
     title: 'string',
-    description: 'string'
+    description: 'string',
+    gridContent: 'object'
   },
 
   requiredProps: [
@@ -80,6 +81,7 @@ const PageModel = Model.extend({
     const pagePartials = getPagePartials(page)
     const title = response.querySelector('title').textContent
     const description = response.querySelector('meta[name="description"]') ? response.querySelector('meta[name="description"]').getAttribute('content') : null
+    const gridContent = JSON.parse(document.querySelector('[data-grid-content]').getAttribute('data-grid-content'))
 
     return {
       document,
@@ -87,7 +89,8 @@ const PageModel = Model.extend({
       pageType,
       pagePartials,
       title,
-      description
+      description,
+      gridContent
     }
   },
 

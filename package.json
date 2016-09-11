@@ -22,8 +22,9 @@
     "start:dev": "forever restart app/start.js || forever start app/start.js",
     "build": ". ~/.nvm/nvm.sh && nvm use && gulp build --production && node script/_run.js generateStaticMarkup",
     "build:dev": ". ~/.nvm/nvm.sh && nvm use && gulp build && node script/_run.js generateStaticMarkup",
-    "deploy": "npm run build && dploy live",
-    "deploy:dev": "npm run build:dev && dploy dev"
+    "deploy": "npm test && npm run build && dploy live",
+    "deploy:dev": "npm test && npm run build:dev && dploy dev",
+    "test": "node script/_run.js testGridContent"
   },
   "folders": {
     "dest": "app/build/assets",
@@ -57,6 +58,7 @@
     "gulp-uglify": "^1.5.4",
     "gulp-util": "^3.0.7",
     "html-minifier": "^3.0.2",
+    "lodash.groupby": "^4.6.0",
     "normalize.css": "^4.2.0",
     "pretty-hrtime": "^1.0.2",
     "require-dir": "^0.3.0",
