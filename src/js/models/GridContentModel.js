@@ -1,30 +1,77 @@
 import assign from 'lodash.assign'
 import shuffle from 'lodash.shuffle'
+import findWhere from 'lodash.findwhere'
 import Model from 'ampersand-model'
 
 import Singleton from 'common/Singleton'
 
+const TYPES = [
+  'neil_and_annie',
+  'neil_and_annie_extension',
+  'wedding',
+  'location'
+]
+
+const props = {}
+TYPES.forEach(type => props[type] = 'array')
+
 const GridContentModel = Model.extend({
 
-  props: {
-    neil_and_annie: 'array',
-    neil_and_annie_extension: 'array',
-    wedding: 'array',
-    location: 'array'
-  },
+  props,
 
   updateContent(gridContent) {
-    console.log(`updateContent`, gridContent)
     gridContent.data.forEach(contentItem => {
       if (this.get(contentItem.label)) return
-      this.set(contentItem.label, contentItem.data)
+      contentItem.data.forEach(item => {
+        assign(item, {
+          // loaded: false,
+          viewed: false
+        })
+      })
+      this.set(contentItem.label, shuffle(contentItem.data))
     })
   },
 
-  getPageContent(keys) {
+  getKeysContent(keys) {
     let content = []
     keys.forEach(key => content = content.concat(this.get(key)))
-    return shuffle(content)
+    return content
+  },
+
+  resetKeysContent(keys) {
+    keys.forEach(key => {
+      this.set(key, shuffle(this.get(key)))
+      this.get(key).forEach(item => {
+        assign(item, {
+          viewed: false
+        })
+      })
+    })
+  },
+
+  getAllItems() {
+    let allItems = []
+    TYPES.forEach(type => allItems = allItems.concat(this.get(type) || []))
+    return allItems
+  },
+
+  getItemBySlug(slug) {
+    const allItems = this.getAllItems()
+    const item = findWhere(allItems, { slug })
+    return item
+  },
+
+  getNextItem(keys) {
+    const items = shuffle(this.getKeysContent(keys))
+    const item = findWhere(items, { viewed: false })
+
+    if (!item) {
+      this.resetKeysContent(keys)
+      return this.getNextItem(keys)
+    } else {
+      item.viewed = true
+      return item
+    }
   }
 
 })

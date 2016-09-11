@@ -9,23 +9,23 @@ import Constants from 'common/Constants'
 
 import AbstractView from 'views/abstract/AbstractView'
 
-const PHOTOS = shuffle([
-  'annie-baby-charlie.jpg',
-  'annie-ruby-violet.jpg',
-  'camping-dinner.jpg',
-  'drinking-grafton.jpg',
-  'neil-annie-halong-bay.jpg',
-  'neil-annie-malvern.jpg',
-  'neil-school-photo.jpg',
-])
+// const PHOTOS = shuffle([
+//   'annie-baby-charlie.jpg',
+//   'annie-ruby-violet.jpg',
+//   'camping-dinner.jpg',
+//   'drinking-grafton.jpg',
+//   'neil-annie-halong-bay.jpg',
+//   'neil-annie-malvern.jpg',
+//   'neil-school-photo.jpg',
+// ])
 
-const COLOURS = [
-  'one',
-  'two',
-  'three',
-  'four',
-  'five'
-]
+// const COLOURS = [
+//   'one',
+//   'two',
+//   'three',
+//   'four',
+//   'five'
+// ]
 
 const GalleryGrid = AbstractView.extend({
   template: 'gallery-grid',
@@ -61,20 +61,15 @@ const GalleryGrid = AbstractView.extend({
 
     const isHome = !appRouter.current.route
     const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
-    const gridContent = gridContentModel.getPageContent(gridContentKeys)
-
-    console.log('\n')
-    console.log('gridContent')
-    console.log(gridContent)
-    console.log('\n')
 
     for (let i = 0; i < 100; i++) {
-      this.addGridItem(i, isHome)
+      const item = gridContentModel.getNextItem(gridContentKeys)
+      this.addGridItem(item, i, isHome)
     }
   },
 
-  addGridItem(index, isHome) {
-    const photo = PHOTOS[ random(0, (PHOTOS.length - 1)) ]
+  addGridItem(contentItem, index, isHome) {
+    // const photo = PHOTOS[ random(0, (PHOTOS.length - 1)) ]
     // const photo = PHOTOS[ index % PHOTOS.length ]
     // const colour = COLOURS[ random(0, (COLOURS.length - 1)) ]
     // const colour = COLOURS[ index % 5 ]
@@ -88,6 +83,7 @@ const GalleryGrid = AbstractView.extend({
       'hide',
       `row--${row}`
     )
+    item.setAttribute('data-grid-item', contentItem.slug)
 
     const itemInner = document.createElement('div')
     itemInner.classList.add('gallery-grid--item-inner')
@@ -99,7 +95,7 @@ const GalleryGrid = AbstractView.extend({
 
     const image = document.createElement('img')
     // image.src = `http://loremflickr.com/500/500/paris?random=${Math.random()}`
-    image.src = `/assets/img/_placeholders/${photo}`
+    image.src = contentItem.source
 
     // const opacity = 1 - (Math.floor(index / 7) / 7)
     // const opacity = random(0.142857143, 1)
