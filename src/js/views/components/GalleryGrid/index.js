@@ -1,34 +1,29 @@
 import random from 'lodash.random'
 import shuffle from 'lodash.shuffle'
+import template from 'lodash.template'
+import domify from 'domify'
 
 import AppRouter from 'router/AppRouter'
 import AppView from 'views/AppView'
 import GridContentModel from 'models/GridContentModel'
 import Channel from 'common/Channel'
 import Constants from 'common/Constants'
+import ViewFinder from 'common/ViewFinder'
 
 import AbstractView from 'views/abstract/AbstractView'
-
-// const PHOTOS = shuffle([
-//   'annie-baby-charlie.jpg',
-//   'annie-ruby-violet.jpg',
-//   'camping-dinner.jpg',
-//   'drinking-grafton.jpg',
-//   'neil-annie-halong-bay.jpg',
-//   'neil-annie-malvern.jpg',
-//   'neil-school-photo.jpg',
-// ])
-
-// const COLOURS = [
-//   'one',
-//   'two',
-//   'three',
-//   'four',
-//   'five'
-// ]
+import Modal from './components/Modal'
+import gridItemTmplStr from './components/Item/index.tmpl'
 
 const GalleryGrid = AbstractView.extend({
   template: 'gallery-grid',
+
+  events: {
+    'click [data-grid-item]': 'onItemClick'
+  },
+
+  modules: [
+    Modal
+  ],
 
   constructor() {
     this._bindClassMethods()
@@ -36,6 +31,9 @@ const GalleryGrid = AbstractView.extend({
     GalleryGrid.__super__.constructor.call(this)
 
     this.gridInner = this.query('[data-grid-inner]')
+    this.modal = ViewFinder.findChildren(this, Modal)[0]
+
+    this.itemTmpl = template(gridItemTmplStr)
 
     this.bindEvents()
   },
@@ -69,43 +67,26 @@ const GalleryGrid = AbstractView.extend({
   },
 
   addGridItem(contentItem, index, isHome) {
-    // const photo = PHOTOS[ random(0, (PHOTOS.length - 1)) ]
-    // const photo = PHOTOS[ index % PHOTOS.length ]
-    // const colour = COLOURS[ random(0, (COLOURS.length - 1)) ]
-    // const colour = COLOURS[ index % 5 ]
     const colour = 'one'
     const row = Math.floor(index / 7) % 2 !== 0 ? 'even' : 'odd'
+    const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
 
-    const item = document.createElement('div')
-    item.classList.add(
-      'gallery-grid--item',
+    const classNames = [
       `colour--${colour}`,
-      'hide',
+      `hide--${hideDirection}`,
       `row--${row}`
-    )
-    item.setAttribute('data-grid-item', contentItem.slug)
+    ]
+    const slug = contentItem.slug
+    const imgSrc = contentItem.source
+    const style = (!isHome) ? `transform: scale(${random(0.9, 1)});` : null
 
-    const itemInner = document.createElement('div')
-    itemInner.classList.add('gallery-grid--item-inner')
+    const item = domify(this.itemTmpl({
+      classNames,
+      slug,
+      imgSrc,
+      style
+    }))
 
-    // item.style.borderTopWidth = random(1, 20) + 'px'
-    // item.style.borderBottomWidth = random(1, 20) + 'px'
-    // item.style.borderLeftWidth = random(1, 20) + 'px'
-    // item.style.borderRightWidth = random(1, 20) + 'px'
-
-    const image = document.createElement('img')
-    // image.src = `http://loremflickr.com/500/500/paris?random=${Math.random()}`
-    image.src = contentItem.source
-
-    // const opacity = 1 - (Math.floor(index / 7) / 7)
-    // const opacity = random(0.142857143, 1)
-    // const scale = 1 - ((index / 7) / 16)
-    const scale = random(0.9, 1)
-    // item.style.opacity = opacity
-    if (!isHome) item.style.transform = `scale(${scale})`
-
-    item.appendChild(itemInner)
-    itemInner.appendChild(image)
     this.gridInner.appendChild(item)
 
     // if (Math.random() > 0.75) {
@@ -114,12 +95,17 @@ const GalleryGrid = AbstractView.extend({
 
       if (index === 0 || Math.random() > 0.333 || isHome) {
         setTimeout(() => {
-          item.classList.remove('hide')
-        }, index * 150 - (Math.floor(index / 7) * 900))
-        // }, random(300, 1500))
+          item.classList.remove('hide', `hide--${hideDirection}`)
+        // }, index * 150 - (Math.floor(index / 7) * 900))
+        }, random(150, 1000))
       }
     }
     // }
+  },
+
+  onItemClick(e) {
+    const target = e.delegateTarget
+    const slug = target.getAttribute('data-grid-item')
   }
 })
 
