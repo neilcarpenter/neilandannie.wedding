@@ -31,6 +31,7 @@ const Header = AbstractView.extend({
     this.onScroll = this.onScroll.bind(this)
     this.onResize = debounce(this.onResize.bind(this), Constants.RESIZE_DEBOUNCE)
     this.onHashChanged = this.onHashChanged.bind(this)
+    this.onFirstHashChanged = this.onFirstHashChanged.bind(this)
     this.onChangeViewStart = this.onChangeViewStart.bind(this)
     this.onChangeViewEnd = this.onChangeViewEnd.bind(this)
     this.onGlobalLoadingShow = this.onGlobalLoadingShow.bind(this)
@@ -41,10 +42,13 @@ const Header = AbstractView.extend({
     this.listenTo(Channel, Constants.EVENT_SCROLL, this.onScroll)
     this.listenTo(Channel, Constants.EVENT_RESIZE, this.onResize)
     this.listenTo(Channel, Constants.EVENT_HASH_CHANGED, this.onHashChanged)
+    this.listenToOnce(Channel, Constants.EVENT_HASH_CHANGED, this.onFirstHashChanged)
     this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_START, this.onChangeViewStart)
     this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_COMPLETE, this.onChangeViewEnd)
     this.listenTo(Channel, Constants.EVENT_SHOW_GLOBAL_LOADING, this.onGlobalLoadingShow)
     this.listenTo(Channel, Constants.EVENT_HIDE_GLOBAL_LOADING, this.onGlobalLoadingHide)
+
+    this.navLinks = this.queryAll('[data-nav-link]')
 
     this.getDimensions()
   },
@@ -61,17 +65,31 @@ const Header = AbstractView.extend({
     this.getDimensions()
   },
 
+  onFirstHashChanged() {
+    this.setActiveLink()
+  },
+
   onHashChanged(current, previous, params) {},
 
   onChangeViewStart() {
     window.scrollTo(0, 0)
   },
 
-  onChangeViewEnd() {},
+  onChangeViewEnd() {
+    this.setActiveLink()
+  },
 
   onGlobalLoadingShow() {},
 
-  onGlobalLoadingHide() {}
+  onGlobalLoadingHide() {},
+
+  setActiveLink() {
+    const appRouter = AppRouter.getInstance()
+    this.navLinks.forEach(link => {
+      const classChange = link.href.match(appRouter.current.route) ? 'add' : 'remove'
+      link.classList[classChange]('is-active')
+    })
+  }
 })
 
 export default assign(Header, Singleton)

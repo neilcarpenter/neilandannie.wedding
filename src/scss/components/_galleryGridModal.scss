@@ -1,0 +1,17 @@
+.gallery-grid--modal {
+  position: fixed;
+  z-index: $z-index-modal;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  visibility: hidden;
+  opacity: 0;
+  transition: all .3s ease-in-out;
+  background: green;
+
+  &.is-shown {
+    opacity: 1;
+    visibility: visible;
+  }
+}

@@ -80,9 +80,9 @@ function getPageMarkup (vars = {}) {
   htmlVars.header = getHeader(vars.version)
   htmlVars.galleryGrid = compileTemplate('components/GalleryGrid', {
     version: 1,
-    modal: compileTemplate('components/GalleryGrid/components/Modal', { version: 1 }),
     gridContent: vars.gridContent
   })
+  htmlVars.galleryGridModal = compileTemplate('components/GalleryGridModal', { version: 1 })
   htmlVars.svgSymbols = svgSymbols
 
   return htmlTmpl(htmlVars)

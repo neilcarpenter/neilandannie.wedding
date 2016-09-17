@@ -6,6 +6,5 @@ export default `
     <div
       class="gallery-grid--inner"
       data-grid-inner></div>
-    <%= modal %>
   </div>
 `

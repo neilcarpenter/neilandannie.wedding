@@ -11,7 +11,6 @@ import Constants from 'common/Constants'
 import ViewFinder from 'common/ViewFinder'
 
 import AbstractView from 'views/abstract/AbstractView'
-import Modal from './components/Modal'
 import gridItemTmplStr from './components/Item/index.tmpl'
 
 const GalleryGrid = AbstractView.extend({
@@ -21,9 +20,7 @@ const GalleryGrid = AbstractView.extend({
     'click [data-grid-item]': 'onItemClick'
   },
 
-  modules: [
-    Modal
-  ],
+  modules: [],
 
   constructor() {
     this._bindClassMethods()
@@ -31,7 +28,6 @@ const GalleryGrid = AbstractView.extend({
     GalleryGrid.__super__.constructor.call(this)
 
     this.gridInner = this.query('[data-grid-inner]')
-    this.modal = ViewFinder.findChildren(this, Modal)[0]
 
     this.itemTmpl = template(gridItemTmplStr)
 
@@ -106,6 +102,12 @@ const GalleryGrid = AbstractView.extend({
   onItemClick(e) {
     const target = e.delegateTarget
     const slug = target.getAttribute('data-grid-item')
+    const gridContentModel = GridContentModel.getInstance()
+    const item = gridContentModel.getItemBySlug(slug)
+
+    Channel.trigger(Constants.EVENT_GALLERY_MODAL_SHOW, item)
+
+    console.log('show item', item)
   }
 })
 

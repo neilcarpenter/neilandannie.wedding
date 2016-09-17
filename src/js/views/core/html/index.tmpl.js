@@ -34,7 +34,7 @@ export default `
   <meta name="twitter:image:width"  content="">
   <meta name="twitter:image:height" content="">
 
-  <link href="https://fonts.googleapis.com/css?family=Amatica+SC:400,700|Muli:400,400i" rel="stylesheet">
+  <!-- <link href="https://fonts.googleapis.com/css?family=Amatica+SC:400,700|Muli:400,400i" rel="stylesheet"> -->
   <link rel="stylesheet" href="/assets/<%= assets.cssMain %>">
 
   <script src="/assets/<%= assets.jsModernizr %>"></script>
@@ -56,6 +56,7 @@ export default `
     <%= header %>
     <%= main %>
     <%= galleryGrid %>
+    <%= galleryGridModal %>
   </div>
   <script src="/assets/<%= assets.jsMain %>"></script>
   <script>

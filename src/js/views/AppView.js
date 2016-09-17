@@ -17,6 +17,7 @@ import TimestampManager from 'common/TimestampManager'
 import Header from 'views/core/Header'
 import Wrapper from 'views/core/Wrapper'
 import GalleryGrid from 'views/components/GalleryGrid'
+import GalleryGridModal from 'views/components/GalleryGridModal'
 import HomeView from 'views/pages/Home'
 
 import { closest } from 'utils/DOM'
@@ -61,11 +62,13 @@ const AppView = AbstractView.extend({
     this.header = Header.getInstance()
     this.wrapper = Wrapper.getInstance()
     this.galleryGrid = new GalleryGrid()
+    this.galleryGridModal = new GalleryGridModal()
 
     this
       .addChild(this.header)
       .addChild(this.wrapper)
       .addChild(this.galleryGrid)
+      .addChild(this.galleryGridModal)
 
     this.scrollItemInView = ScrollItemInView.getInstance({ appView: this })
     this.timestampManager = TimestampManager.getInstance({ appView: this })
@@ -81,14 +84,11 @@ const AppView = AbstractView.extend({
     this.onKeyUp = this.onKeyUp.bind(this)
     this.onBlur = this.onBlur.bind(this)
     this.onPageOrAnchorChange = this.onPageOrAnchorChange.bind(this)
-    this.onViewChangeComplete = this.onViewChangeComplete.bind(this)
+    this.onViewChangeStart = this.onViewChangeStart.bind(this)
   },
 
   bindEvents() {
-    // Call this here to make sure that we have app view dimensions
-    // before we kick everything off
     this.onResize()
-
     this.onResize = debounce(this.onResize.bind(this), Constants.RESIZE_DEBOUNCE)
 
     window.addEventListener('keydown', this.onKeyDown)
@@ -99,7 +99,7 @@ const AppView = AbstractView.extend({
 
     this.listenTo(Channel, Constants.EVENT_ANCHOR_CHANGED, this.onPageOrAnchorChange)
     this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_COMPLETE, this.onPageOrAnchorChange)
-    this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_COMPLETE, this.onViewChangeComplete)
+    this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_START, this.onViewChangeStart)
   },
 
   begin() {
@@ -127,7 +127,7 @@ const AppView = AbstractView.extend({
 
   onPageOrAnchorChange() {},
 
-  onViewChangeComplete() {
+  onViewChangeStart() {
     this.checkForHomepage()
   },
 

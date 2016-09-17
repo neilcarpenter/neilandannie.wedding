@@ -1,11 +1,4 @@
-.header {
-  position: fixed;
-  z-index: $z-index-header;
-  width: 100%;
-  top: 0;
-  left: 0;
-  height: $header--height-large;
-}
+.header {}
 
 .header--logo {
   position: fixed;
@@ -16,6 +9,7 @@
   right: 130px;
   transform: translate(50%, -50%);
   margin: 0;
+  z-index: $z-index-header + 1;
   transition: all .3s ease-in-out;
 
   .is-home & {
@@ -41,10 +35,11 @@
 }
 
 .header--nav {
-  position: absolute;
-  top: 46%;
+  position: fixed;
   left: 66%;
   width: 50%;
+  z-index: $z-index-header;
+  top: $header--height-large / 2;
   transform: translate(-50%, -50%);
   text-align: center;
   transition: all .3s ease-in-out;
@@ -71,5 +66,17 @@
   .is-home & {
     color: $white;
     border-color: transparent;
+
+    .no-touchevents & {
+
+      &:hover {
+        border-bottom: 2px solid rgba(255, 255, 255, 0.7);
+      }
+    }
+  }
+
+  .no-touchevents &:hover,
+  &.is-active {
+    border-bottom: 2px solid $black;
   }
 }
