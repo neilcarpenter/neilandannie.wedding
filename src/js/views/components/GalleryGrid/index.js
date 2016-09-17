@@ -104,8 +104,10 @@ const GalleryGrid = AbstractView.extend({
     const slug = target.getAttribute('data-grid-item')
     const gridContentModel = GridContentModel.getInstance()
     const item = gridContentModel.getItemBySlug(slug)
+    const appRouter = AppRouter.getInstance()
 
     Channel.trigger(Constants.EVENT_GALLERY_MODAL_SHOW, item)
+    appRouter.changeAnchor(item.slug)
 
     console.log('show item', item)
   }
