@@ -44,7 +44,9 @@ const GalleryGridModal = AbstractView.extend({
     window.addEventListener('keyup', this.onKeyUp)
   },
 
-  show(item) {
+  show(item, fromRow) {
+    const alignment = fromRow === 'even' ? 'right' : 'left'
+    this.el.setAttribute('data-align', alignment)
     this.el.classList.add('is-shown')
 
     this.showItem(item)
@@ -61,11 +63,14 @@ const GalleryGridModal = AbstractView.extend({
   },
 
   showItem(item) {
-    this.activeItem = domify(this.itemTmpl(item))
+    this.activeItem = domify(this.itemTmpl({ item }))
     this.itemContainer.appendChild(this.activeItem)
   },
 
   switchItems(item) {
+    const alignment = this.el.getAttribute('data-align') === 'left' ? 'right' : 'left'
+    this.el.setAttribute('data-align', alignment)
+
     this.activeItem.remove()
     this.showItem(item)
   },
@@ -75,8 +80,8 @@ const GalleryGridModal = AbstractView.extend({
     appRouter.changeAnchor(null)
   },
 
-  onShowItem(item) {
-    this.show(item)
+  onShowItem(item, fromRow) {
+    this.show(item, fromRow)
   },
 
   onCloseClick() {

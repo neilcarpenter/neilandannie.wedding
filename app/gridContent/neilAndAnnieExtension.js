@@ -3,7 +3,8 @@ export default [
     slug: 'drinking-grafton',
     type: 'image',
     source: '/assets/img/_placeholders/drinking-grafton.jpg',
-    title: '',
+    title: 'Drinking',
+    location: 'The Grafton, Kentish Town',
     timestamp: '',
     comment_neil: '',
     comment_annie: ''
@@ -12,7 +13,8 @@ export default [
     slug: 'camping-dinner',
     type: 'image',
     source: '/assets/img/_placeholders/camping-dinner.jpg',
-    title: '',
+    title: 'Camping Dinner',
+    location: 'Isle of Wight',
     timestamp: '',
     comment_neil: '',
     comment_annie: ''

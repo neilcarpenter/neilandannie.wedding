@@ -8,10 +8,82 @@
   visibility: hidden;
   opacity: 0;
   transition: all .3s ease-in-out;
-  background: green;
+  background: #FDF1F1;
 
   &.is-shown {
     opacity: 1;
     visibility: visible;
+  }
+
+  .close-btn {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    right: 10px;
+  }
+
+  .random-btn {
+    position: absolute;
+    z-index: 1;
+    top: 10px;
+    left: 10px;
+  }
+
+  &[data-align="right"] {}
+
+  &[data-align="left"] {}
+}
+
+.gallery-grid--modal-media {
+  position: absolute;
+  width: 65%;
+  height: 100%;
+  top: 0;
+
+  [data-align="right"] & {
+    left: 0;
+
+    &:after {
+      right: -10%;
+      transform: skewX(10deg)
+    }
+  }
+
+  [data-align="left"] & {
+    right: 0;
+
+    &:after {
+      left: -10%;
+      transform: skewX(-10deg)
+    }
+  }
+
+  img {
+  }
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    width: 20%;
+    height: 100%;
+    background: #FDF1F1;
+    z-index: 1;
+  }
+}
+
+.gallery-grid--modal-text {
+  position: absolute;
+  width: 35%;
+  height: 100%;
+  top: 10%;
+  z-index: 2;
+
+  [data-align="right"] & {
+    right: 0;
+  }
+
+  [data-align="left"] & {
+    left: 0;
   }
 }

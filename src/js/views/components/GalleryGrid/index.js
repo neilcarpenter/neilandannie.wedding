@@ -102,14 +102,13 @@ const GalleryGrid = AbstractView.extend({
   onItemClick(e) {
     const target = e.delegateTarget
     const slug = target.getAttribute('data-grid-item')
+    const row = Array.prototype.slice.call(target.classList).filter(className => className.match(/^row--/)).map(className => className.replace(/^row--/, ''))[0]
     const gridContentModel = GridContentModel.getInstance()
     const item = gridContentModel.getItemBySlug(slug)
     const appRouter = AppRouter.getInstance()
 
-    Channel.trigger(Constants.EVENT_GALLERY_MODAL_SHOW, item)
+    Channel.trigger(Constants.EVENT_GALLERY_MODAL_SHOW, item, row)
     appRouter.changeAnchor(item.slug)
-
-    console.log('show item', item)
   }
 })
 
