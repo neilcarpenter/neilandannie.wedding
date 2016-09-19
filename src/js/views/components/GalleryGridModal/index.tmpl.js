@@ -17,6 +17,6 @@ export default `
     data-naaw-tmpl="gallery-grid-modal">
     <button class="close-btn" data-close-btn>Close</button>
     <button class="random-btn" data-random-btn>Show another thing</button>
-    <div data-modal-content></div>
+    <div class="gallery-grid--modal-content" data-modal-content></div>
   </div>
 `

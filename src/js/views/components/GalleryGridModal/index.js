@@ -49,30 +49,44 @@ const GalleryGridModal = AbstractView.extend({
     this.el.setAttribute('data-align', alignment)
     this.el.classList.add('is-shown')
 
-    this.showItem(item)
+    this.showItem(item, false)
 
     this.shown = true
   },
 
   hide() {
     this.el.classList.remove('is-shown')
-    this.activeItem.remove()
-    this.activeItem = null
+    this.itemContainer.classList.remove('is-shown')
+
+    setTimeout(() => {
+      this.activeItem.remove()
+      this.activeItem = null
+    }, 400)
 
     this.shown = false
   },
 
-  showItem(item) {
+  showItem(item, fromSwitch=true) {
     this.activeItem = domify(this.itemTmpl({ item }))
     this.itemContainer.appendChild(this.activeItem)
+
+    const delay = fromSwitch ? 100 : 250
+    setTimeout(() => {
+      this.itemContainer.classList.add('is-shown')
+    }, delay)
   },
 
   switchItems(item) {
-    const alignment = this.el.getAttribute('data-align') === 'left' ? 'right' : 'left'
-    this.el.setAttribute('data-align', alignment)
+    console.log(`switchItems`)
+    this.itemContainer.classList.remove('is-shown')
 
-    this.activeItem.remove()
-    this.showItem(item)
+    setTimeout(() => {
+      const alignment = this.el.getAttribute('data-align') === 'left' ? 'right' : 'left'
+      this.el.setAttribute('data-align', alignment)
+
+      this.activeItem.remove()
+      this.showItem(item)
+    }, 400)
   },
 
   triggerHide() {
@@ -104,7 +118,9 @@ const GalleryGridModal = AbstractView.extend({
     if (e.keyCode === 27) this.triggerHide()
   },
 
-  onAnchorOrHashChange() {
+  onAnchorOrHashChange(current, previous, FIRST_ROUTE) {
+    if (FIRST_ROUTE) return
+
     const appRouter = AppRouter.getInstance()
     const hash = appRouter.getAnchor()
     const gridContentModel = GridContentModel.getInstance()
