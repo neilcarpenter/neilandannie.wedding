@@ -6,11 +6,12 @@
   width: #{197 * .5}px;
   height: #{154 * .5}px;
   top: 50px;
-  right: 130px;
+  right: 80px;
   transform: translate(50%, -50%);
   margin: 0;
   z-index: $z-index-header + 1;
   transition: all .3s ease-in-out;
+  filter: drop-shadow(1px 1px 0 rgba(253, 241, 241, 0.5));
 
   .is-home & {
     width: #{197 * 2.5}px;
@@ -18,10 +19,15 @@
     top: 50%;
     right: 50%;
     pointer-events: none;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
 
     path {
       fill: $white;
     }
+  }
+
+  .is-home .mobile-menu-open & {
+    opacity: 0;
   }
 
   svg {
@@ -33,8 +39,8 @@
     fill: $black;
   }
 
-  @include narrower-than(tabletportrait) {
-    right: 55px;
+  @include narrower-than(tabletlandscape) {
+    right: 65px;
   }
 }
 
@@ -42,6 +48,7 @@
   position: fixed;
   left: 66%;
   width: 50%;
+  padding: 0 70px;
   z-index: $z-index-header;
   top: $header--height-large / 2;
   transform: translate(-50%, -50%);
@@ -54,19 +61,27 @@
 
   li {
     display: inline-block;
+    margin-bottom: 5px;
   }
 
-  @include narrower-than(tabletportrait) {
+  @include narrower-than(tabletlandscape) {
     opacity: 0;
+    visibility: hidden;
     width: 100%;
     height: 100%;
     background: #FDF1F1;
     left: 0;
     top: 0;
     transform: none;
+    padding: 0;
+
+    .is-home & {
+      left: 0;
+    }
 
     .mobile-menu-open & {
       opacity: 1;
+      visibility: visible;
     }
 
     ul {
@@ -86,6 +101,7 @@
 .header--nav-item {
   text-decoration: none;
   color: $black;
+  filter: drop-shadow(1px 1px 0 rgba(253, 241, 241, 0.5));
   border-bottom: 2px solid rgba(0, 0, 0, 0.3);
   margin-right: 20px;
   font-family: $ff-amatica;
@@ -96,6 +112,7 @@
   .is-home & {
     color: $white;
     border-color: transparent;
+    filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
 
     .no-touchevents & {
 
@@ -103,6 +120,10 @@
         border-bottom: 2px solid rgba(255, 255, 255, 0.7);
       }
     }
+  }
+
+  .is-home .mobile-menu-open & {
+    color: $black;
   }
 
   .no-touchevents &:hover,
@@ -116,17 +137,20 @@
   z-index: $z-index-header + 1;
   top: 20px;
   left: 20px;
+  opacity: 0;
+  visibility: hidden;
+  cursor: pointer;
 
   width: 40px;
   height: 40px;
   background: red;
-  opacity: 0;
 
   .mobile-menu-open & {
     background: blue;
   }
 
-  @include narrower-than(tabletportrait) {
+  @include narrower-than(tabletlandscape) {
     opacity: 1;
+    visibility: visible;
   }
 }

@@ -14,6 +14,14 @@ import MediaQueries from 'common/MediaQueries'
 import AbstractView from 'views/abstract/AbstractView'
 import gridItemTmplStr from './components/Item/index.tmpl'
 
+const sizes = {
+  LARGE: 14,
+  MEDIUM: 20,
+  SMALL: 20
+}
+
+const ITEM_TRANSITION_TIME = 300
+
 const GalleryGrid = AbstractView.extend({
   template: 'gallery-grid',
 
@@ -22,6 +30,8 @@ const GalleryGrid = AbstractView.extend({
   },
 
   modules: [],
+
+  currentItems: [],
 
   constructor() {
     this._bindClassMethods()
@@ -32,21 +42,45 @@ const GalleryGrid = AbstractView.extend({
 
     this.itemTmpl = template(gridItemTmplStr)
 
+    this.cacheDimensions()
     this.bindEvents()
   },
 
   _bindClassMethods() {
     this.reset = this.reset.bind(this)
+    this.onFirstHashChanged = this.onFirstHashChanged.bind(this)
+    this.onResize = this.onResize.bind(this)
+    this.onChangeViewComplete = this.onChangeViewComplete.bind(this)
+  },
+
+  cacheDimensions() {
+    this.dimensions = {
+      innerWidth: this.gridInner.clientWidth
+    }
   },
 
   bindEvents() {
-    this.listenToOnce(Channel, Constants.EVENT_HASH_CHANGED, this.reset)
-    this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_COMPLETE, this.reset)
-    // this.listenTo(Channel, Constants.EVENT_RESIZE, this.reset)
+    this.listenToOnce(Channel, Constants.EVENT_HASH_CHANGED, this.onFirstHashChanged)
+    this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_COMPLETE, this.onChangeViewComplete)
+  },
+
+  onFirstHashChanged() {
+    this.listenTo(Channel, Constants.EVENT_RESIZE, this.onResize)
+    this.reset()
+  },
+
+  onResize() {
+    this.cacheDimensions()
+    this.reset()
+  },
+
+  onChangeViewComplete() {
+    this.animateItemsOut(this.reset)
   },
 
   reset() {
-    while (this.gridInner.firstChild) this.gridInner.removeChild(this.gridInner.firstChild)
+    this.currentItems.forEach(item => this.gridInner.removeChild(item))
+    this.currentItems = []
     this.buildGrid()
   },
 
@@ -54,17 +88,22 @@ const GalleryGrid = AbstractView.extend({
     const appRouter = AppRouter.getInstance()
     const appView = AppView.getInstance()
     const gridContentModel = GridContentModel.getInstance()
+    const currentSize = this._getGridItemSize()
+    const colCount = this._getColCount()
+    const itemCount = Math.round((this.dimensions.innerWidth / currentSize) * Math.ceil(appView.dimensions.height / currentSize))
 
     const isHome = !appRouter.current.route
     const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
 
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < itemCount; i++) {
       const item = gridContentModel.getNextItem(gridContentKeys)
-      this.addGridItem(item, i, isHome)
+      if (this._canRenderItem(i, isHome)) {
+        this.addGridItem(item, currentSize, i, isHome)
+      }
     }
   },
 
-  addGridItem(contentItem, index, isHome) {
+  addGridItem(contentItem, currentSize, index, isHome) {
     const colCount = this._getColCount()
     const colour = 'one'
     const row = Math.floor(index / colCount) % 2 !== 0 ? 'even' : 'odd'
@@ -77,29 +116,39 @@ const GalleryGrid = AbstractView.extend({
     ]
     const slug = contentItem.slug
     const imgSrc = contentItem.source
-    const style = (!isHome) ? `transform: scale(${random(0.9, 1)});` : null
+    const width = currentSize
+    const left = (index % colCount) * currentSize
+    const top = Math.floor(index / colCount) * currentSize
+    const transform = (!isHome) ? `scale(${random(0.9, 1)})` : null
 
     const item = domify(this.itemTmpl({
       classNames,
       slug,
       imgSrc,
-      style
+      width,
+      left,
+      top,
+      transform
     }))
 
+    this.currentItems.push(item)
     this.gridInner.appendChild(item)
 
-    // if (Math.random() > 0.75) {
-    // if (((index % 7) / 7) < 0.3) {
-    if (this._canRenderItem(index) || isHome) {
+    setTimeout(() => {
+      item.classList.remove('hide', `hide--${hideDirection}`)
+    }, random(150, 1000))
+  },
 
-      if (index === 0 || Math.random() > 0.333 || isHome) {
-        setTimeout(() => {
-          item.classList.remove('hide', `hide--${hideDirection}`)
-        // }, index * 150 - (Math.floor(index / 7) * 900))
-        }, random(150, 1000))
-      }
+  _getGridItemSize() {
+    let sizePercentage
+
+    if (MediaQueries.isSmallerThanBreakpoint(MediaQueries.TABLETLANDSCAPE)) {
+      sizePercentage = sizes.MEDIUM
+    } else {
+      sizePercentage = sizes.LARGE
     }
-    // }
+
+    return (sizePercentage / 100) * this.dimensions.innerWidth
   },
 
   _getColCount() {
@@ -110,17 +159,44 @@ const GalleryGrid = AbstractView.extend({
     }
   },
 
-  _canRenderItem(index) {
+  _canRenderItem(index, isHome) {
     const colCount = this._getColCount()
     const state = MediaQueries.getDeviceState()
+    let shouldRenderLayout = false
+    let shouldRenderChance = false
 
-    if (state === MediaQueries.DEFAULT) {
-      return (index % colCount < 1)
+    if (isHome) {
+      shouldRenderLayout = true
+    } else if (state === MediaQueries.DEFAULT) {
+      shouldRenderLayout = (index % colCount < 1)
     } else if (state === MediaQueries.TABLETPORTRAIT) {
-      return (index % colCount < 2)
+      shouldRenderLayout = (index % colCount < 2)
     } else {
-      return (index % colCount < 3 || index % colCount > 5) && (Math.floor(index / colCount) > 0 || index % colCount < 3)
+      shouldRenderLayout = (index % colCount < 3 || index % colCount > 5) && (Math.floor(index / colCount) > 0 || index % colCount < 3)
     }
+
+    if (index === 0 || Math.random() > 0.333 || state === MediaQueries.DEFAULT || isHome) {
+      shouldRenderChance = true
+    }
+
+    return shouldRenderLayout && shouldRenderChance
+  },
+
+  animateItemsOut(cb) {
+    let maxDelay = 0
+
+    this.currentItems.forEach(item => {
+      const delay = random(0, 500)
+      const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
+
+      setTimeout(() => {
+        item.classList.add('hide', `hide--${hideDirection}`)
+      }, delay)
+
+      maxDelay = delay > maxDelay ? delay : maxDelay
+    })
+
+    setTimeout(cb, maxDelay + ITEM_TRANSITION_TIME)
   },
 
   onItemClick(e) {
