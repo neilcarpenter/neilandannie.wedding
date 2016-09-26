@@ -1,3 +1,6 @@
+$item-width-large: 14;
+$item-width-medium: 20;
+
 .gallery-grid {
   overflow: hidden;
   position: fixed;
@@ -39,13 +42,23 @@
   cursor: pointer;
   float: left;
   height: 0;
-  width: #{14 * 1 + "%"};
-  padding-bottom: #{14 * 1 + "%"};
+  width: #{$item-width-large * 1 + "%"};
+  padding-bottom: #{$item-width-large * 1 + "%"};
   position: relative;
   opacity: 1;
   visibility: visible;
   transition: all .5s ease-in-out;
   z-index: 1;
+
+  @include narrower-than(tabletlandscape) {
+    width: #{$item-width-medium * 1 + "%"};
+    padding-bottom: #{$item-width-medium * 1 + "%"};
+  }
+
+  @include narrower-than(tabletportrait) {
+    width: #{$item-width-medium * 1 + "%"};
+    padding-bottom: #{$item-width-medium * 1 + "%"};
+  }
 
   &.row--even {
 

@@ -88,8 +88,7 @@
 .gallery-grid--modal-text {
   position: absolute;
   width: 35%;
-  height: 100%;
-  top: 10%;
+  top: 50%;
   z-index: 2;
   transition: all .3s ease-out;
   opacity: 0;
@@ -97,18 +96,36 @@
 
   [data-align="right"] & {
     right: 0;
-    transform: skewX(5deg) translate3d(-15px, 0, 0);
+    transform: skewX(5deg) translate3d(-15px, -50%, 0);
   }
 
   [data-align="left"] & {
     left: 0;
-    transform: skewX(-5deg) translate3d(15px, 0, 0);
+    transform: skewX(-5deg) translate3d(15px, -50%, 0);
   }
 
   .gallery-grid--modal-content.is-shown & {
     opacity: 1;
     visibility: visible;
-    transform: none;
+    transform: translate3d(0, -50%, 0);
     transition-delay: 0.2s;
+  }
+}
+
+.gallery-grid--modal-triangle {
+  position: absolute;
+  top: 0;
+  width: 20%;
+  height: 100%;
+  z-index: 1;
+  // background: url() no-repeat center center;
+  background-size: 100%;
+
+  [data-align="right"] & {
+    left: -20%;
+  }
+
+  [data-align="left"] & {
+    right: -20%;
   }
 }

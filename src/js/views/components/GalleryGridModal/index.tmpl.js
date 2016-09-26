@@ -9,6 +9,7 @@ export const modalItem = `
     <div class="gallery-grid--modal-media">
       <img class="img--object-fit" src="<%= item.source %>" alt="<%= item.title %>">
     </div>
+    <span class="gallery-grid--modal-triangle"></span>
   </div>
 `
 export default `

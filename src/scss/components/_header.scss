@@ -32,6 +32,10 @@
   path {
     fill: $black;
   }
+
+  @include narrower-than(tabletportrait) {
+    right: 55px;
+  }
 }
 
 .header--nav {
@@ -50,6 +54,32 @@
 
   li {
     display: inline-block;
+  }
+
+  @include narrower-than(tabletportrait) {
+    opacity: 0;
+    width: 100%;
+    height: 100%;
+    background: #FDF1F1;
+    left: 0;
+    top: 0;
+    transform: none;
+
+    .mobile-menu-open & {
+      opacity: 1;
+    }
+
+    ul {
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 100%;
+    }
+
+    li {
+      display: block;
+      margin-bottom: 3vh;
+    }
   }
 }
 
@@ -78,5 +108,25 @@
   .no-touchevents &:hover,
   &.is-active {
     border-bottom: 2px solid $black;
+  }
+}
+
+.header--burger-btn {
+  position: fixed;
+  z-index: $z-index-header + 1;
+  top: 20px;
+  left: 20px;
+
+  width: 40px;
+  height: 40px;
+  background: red;
+  opacity: 0;
+
+  .mobile-menu-open & {
+    background: blue;
+  }
+
+  @include narrower-than(tabletportrait) {
+    opacity: 1;
   }
 }

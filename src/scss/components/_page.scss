@@ -24,6 +24,18 @@
     visibility: hidden;
     transform: skewX(-5deg) translate3d(10%, 0, 0);
   }
+
+  @include narrower-than(tabletlandscape) {
+    width: 60%;
+    margin-left: 40%;
+    padding: 0 40px;
+  }
+
+  @include narrower-than(tabletportrait) {
+    width: 84%;
+    margin-left: 16%;
+    padding: 0 20px;
+  }
 }
 
 .page.page-home {

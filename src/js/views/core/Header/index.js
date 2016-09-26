@@ -18,9 +18,13 @@ import AbstractView from 'views/abstract/AbstractView'
 const Header = AbstractView.extend({
   template: 'header',
 
+  mobileMenuOpen: false,
+
   modules: [],
 
-  events: {},
+  events: {
+    'click [data-burger-btn]': 'onBurgerClick'
+  },
 
   constructor() {
     this._bindClassMethods()
@@ -69,7 +73,9 @@ const Header = AbstractView.extend({
     this.setActiveLink()
   },
 
-  onHashChanged(current, previous, params) {},
+  onHashChanged(current, previous, params) {
+    if (this.mobileMenuOpen) this.closeMobileMenu()
+  },
 
   onChangeViewStart() {
     window.scrollTo(0, 0)
@@ -82,6 +88,24 @@ const Header = AbstractView.extend({
   onGlobalLoadingShow() {},
 
   onGlobalLoadingHide() {},
+
+  onBurgerClick() {
+    if (this.mobileMenuOpen) {
+      this.closeMobileMenu()
+    } else {
+      this.openMobileMenu()
+    }
+  },
+
+  openMobileMenu() {
+    this.el.classList.add('mobile-menu-open')
+    this.mobileMenuOpen = true
+  },
+
+  closeMobileMenu() {
+    this.el.classList.remove('mobile-menu-open')
+    this.mobileMenuOpen = false
+  },
 
   setActiveLink() {
     const appRouter = AppRouter.getInstance()

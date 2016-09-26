@@ -9,6 +9,7 @@ import GridContentModel from 'models/GridContentModel'
 import Channel from 'common/Channel'
 import Constants from 'common/Constants'
 import ViewFinder from 'common/ViewFinder'
+import MediaQueries from 'common/MediaQueries'
 
 import AbstractView from 'views/abstract/AbstractView'
 import gridItemTmplStr from './components/Item/index.tmpl'
@@ -41,6 +42,7 @@ const GalleryGrid = AbstractView.extend({
   bindEvents() {
     this.listenToOnce(Channel, Constants.EVENT_HASH_CHANGED, this.reset)
     this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_COMPLETE, this.reset)
+    // this.listenTo(Channel, Constants.EVENT_RESIZE, this.reset)
   },
 
   reset() {
@@ -63,8 +65,9 @@ const GalleryGrid = AbstractView.extend({
   },
 
   addGridItem(contentItem, index, isHome) {
+    const colCount = this._getColCount()
     const colour = 'one'
-    const row = Math.floor(index / 7) % 2 !== 0 ? 'even' : 'odd'
+    const row = Math.floor(index / colCount) % 2 !== 0 ? 'even' : 'odd'
     const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
 
     const classNames = [
@@ -87,7 +90,7 @@ const GalleryGrid = AbstractView.extend({
 
     // if (Math.random() > 0.75) {
     // if (((index % 7) / 7) < 0.3) {
-    if ((index % 7 < 3 || index % 7 > 5) && (Math.floor(index / 7) > 0 || index % 7 < 3) || isHome) {
+    if (this._canRenderItem(index) || isHome) {
 
       if (index === 0 || Math.random() > 0.333 || isHome) {
         setTimeout(() => {
@@ -97,6 +100,27 @@ const GalleryGrid = AbstractView.extend({
       }
     }
     // }
+  },
+
+  _getColCount() {
+    if (MediaQueries.isSmallerThanBreakpoint(MediaQueries.TABLETLANDSCAPE)) {
+      return 5
+    } else {
+      return 7
+    }
+  },
+
+  _canRenderItem(index) {
+    const colCount = this._getColCount()
+    const state = MediaQueries.getDeviceState()
+
+    if (state === MediaQueries.DEFAULT) {
+      return (index % colCount < 1)
+    } else if (state === MediaQueries.TABLETPORTRAIT) {
+      return (index % colCount < 2)
+    } else {
+      return (index % colCount < 3 || index % colCount > 5) && (Math.floor(index / colCount) > 0 || index % colCount < 3)
+    }
   },
 
   onItemClick(e) {
