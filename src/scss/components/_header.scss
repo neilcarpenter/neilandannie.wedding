@@ -40,7 +40,10 @@
   }
 
   @include narrower-than(tabletlandscape) {
-    right: 65px;
+    right: 45px;
+    top: 40px;
+    width: #{197 * .3}px;
+    height: #{154 * .3}px;
   }
 }
 
@@ -124,6 +127,7 @@
 
   .is-home .mobile-menu-open & {
     color: $black;
+    filter: none
   }
 
   .no-touchevents &:hover,
@@ -140,17 +144,48 @@
   opacity: 0;
   visibility: hidden;
   cursor: pointer;
+  overflow: hidden;
 
   width: 40px;
   height: 40px;
-  background: red;
 
   .mobile-menu-open & {
-    background: blue;
+
+    .label {
+      transform: translate3d(0, -100%, 0);
+    }
+  }
+
+  .label {
+    display: block;
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: all .15s ease-in-out;
+    line-height: 40px;
+    font-family: $ff-amatica;
+    font-size: 2rem;
+    font-weight: 700;
+    text-align: center;
+
+    &.label-open {
+      color: $white;
+      filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
+    }
+
+    &.label-closed {
+      color: $black;
+      filter: drop-shadow(1px 1px 0 rgba(253, 241, 241, 0.5));
+    }
   }
 
   @include narrower-than(tabletlandscape) {
     opacity: 1;
     visibility: visible;
+  }
+
+  @include narrower-than(tabletportrait) {
+    top: 20px;
+    left: 10px;
   }
 }

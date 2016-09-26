@@ -27,6 +27,13 @@
     background: rgba(253, 241, 241, 0.8);
     z-index: 0;
   }
+
+  @include narrower-than(tabletlandscape) {
+
+    &:after {
+      height: $header--height-small;
+    }
+  }
 }
 
 .gallery-grid--inner {

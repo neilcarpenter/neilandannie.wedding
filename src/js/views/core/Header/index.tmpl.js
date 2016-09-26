@@ -24,6 +24,9 @@ export default `
         </li>
       </ul>
     </nav>
-    <span class="header--burger-btn" data-burger-btn></span>
+    <span class="header--burger-btn" data-burger-btn>
+      <span class="label label-open">Menu</span>
+      <span class="label label-closed">Close</span>
+    </span>
   </header>
 `
