@@ -78,15 +78,6 @@
     transform: none;
     padding: 0;
 
-    .is-home & {
-      left: 0;
-    }
-
-    .mobile-menu-open & {
-      opacity: 1;
-      visibility: visible;
-    }
-
     ul {
       position: absolute;
       top: 50%;
@@ -97,6 +88,53 @@
     li {
       display: block;
       margin-bottom: 3vh;
+      opacity: 0;
+      visibility: hidden;
+      transition: all .3s ease-in-out;
+      transition-delay: 0.3s;
+
+      &:nth-of-type(odd) {
+        transform: skewX(-5deg) translate3d(10%, 0, 0);
+      }
+
+      &:nth-of-type(even) {
+        transform: skewX(5deg) translate3d(-10%, 0, 0);
+      }
+    }
+
+    .is-home & {
+      left: 0;
+    }
+
+    .mobile-menu-open & {
+      opacity: 1;
+      visibility: visible;
+
+      li {
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+
+        &:nth-of-type(1) {
+          transition-delay: 0.3s;
+        }
+
+        &:nth-of-type(2) {
+          transition-delay: 0.35s;
+        }
+
+        &:nth-of-type(3) {
+          transition-delay: 0.4s;
+        }
+
+        &:nth-of-type(4) {
+          transition-delay: 0.45s;
+        }
+
+        &:nth-of-type(5) {
+          transition-delay: 0.5s;
+        }
+      }
     }
   }
 }

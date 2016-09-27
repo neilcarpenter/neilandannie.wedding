@@ -24,6 +24,8 @@ import { closest } from 'utils/DOM'
 
 const UTILITY_KEYS = [ 91, 17, 16 ]
 
+const RESIZE_CHANGE_THRESHOLD = 50
+
 const AppView = AbstractView.extend({
   template: 'naaw-app',
 
@@ -156,9 +158,14 @@ const AppView = AbstractView.extend({
   },
 
   onResize(e) {
+    const oldDimensions = this.dimensions
+
     this.setViewportDimensions()
 
-    Channel.trigger(Constants.EVENT_RESIZE, this.dimensions)
+    if (Math.abs(oldDimensions.width - this.dimensions.width) > RESIZE_CHANGE_THRESHOLD ||
+      Math.abs(oldDimensions.height - this.dimensions.height) > RESIZE_CHANGE_THRESHOLD) {
+      Channel.trigger(Constants.EVENT_RESIZE, this.dimensions)
+    }
   },
 
   onNavMaskClick(e) {
