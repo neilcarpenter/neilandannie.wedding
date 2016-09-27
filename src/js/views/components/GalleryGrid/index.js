@@ -11,6 +11,8 @@ import Constants from 'common/Constants'
 import ViewFinder from 'common/ViewFinder'
 import MediaQueries from 'common/MediaQueries'
 
+import { setTransform } from 'utils/DOM'
+
 import AbstractView from 'views/abstract/AbstractView'
 import gridItemTmplStr from './components/Item/index.tmpl'
 
@@ -119,7 +121,6 @@ const GalleryGrid = AbstractView.extend({
     const width = currentSize
     const left = (index % colCount) * currentSize
     const top = Math.floor(index / colCount) * currentSize
-    const transform = (!isHome) ? `scale(${random(0.9, 1)})` : null
 
     const item = domify(this.itemTmpl({
       classNames,
@@ -127,9 +128,10 @@ const GalleryGrid = AbstractView.extend({
       imgSrc,
       width,
       left,
-      top,
-      transform
+      top
     }))
+
+    if (!isHome) setTransform(item, `scale(${random(0.9, 1)})`)
 
     this.currentItems.push(item)
     this.gridInner.appendChild(item)

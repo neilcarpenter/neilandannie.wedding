@@ -162,6 +162,7 @@
   transition: all .3s ease-out;
   opacity: 0;
   visibility: hidden;
+  padding: 0 70px;
 
   [data-align="right"] & {
     right: 0;
@@ -187,27 +188,10 @@
     width: 100%;
     bottom: 0;
     transform: none !important;
+    padding: 10px 20px 0;
   }
 
   h2 {
     @extend .h3;
-  }
-}
-
-.gallery-grid--modal-triangle {
-  position: absolute;
-  top: 0;
-  width: 20%;
-  height: 100%;
-  z-index: 1;
-  // background: url() no-repeat center center;
-  background-size: 100%;
-
-  [data-align="right"] & {
-    left: -20%;
-  }
-
-  [data-align="left"] & {
-    right: -20%;
   }
 }
