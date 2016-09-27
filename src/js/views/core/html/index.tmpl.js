@@ -1,4 +1,5 @@
 export default `
+<!DOCTYPE html>
 <html class="no-js">
 <head>
   <meta name="content-type" content="text/html; charset=utf-8">
