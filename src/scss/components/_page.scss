@@ -30,14 +30,14 @@
     margin-left: 40%;
     padding: 0 40px;
     margin-top: $header--height-small;
-    transform: translate3d(-5%, 0, 0);
+    transform: translate3d(0, 5%, 0);
 
     &.is-animating-in {
       transform: none;
     }
 
     &.is-animating-out {
-      transform: translate3d(5%, 0, 0);
+      transform: translate3d(0, -5%, 0);
     }
   }
 
