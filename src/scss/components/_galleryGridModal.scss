@@ -17,6 +17,8 @@
 
   .close-btn,
   .random-btn {
+    position: absolute;
+    top: 10px;
     padding: 0 0 5px;
     font-family: $ff-amatica;
     font-size: 2.5rem;
@@ -29,7 +31,7 @@
     transition: all .3s ease-in-out;
     cursor: pointer;
     -webkit-appearance: none;
-    z-index: 2;
+    z-index: 3;
 
     .no-touchevents & {
 
@@ -44,16 +46,10 @@
   }
 
   .close-btn {
-    position: absolute;
-    z-index: 1;
-    top: 10px;
     right: 10px;
   }
 
   .random-btn {
-    position: absolute;
-    z-index: 1;
-    top: 10px;
     left: 10px;
   }
 

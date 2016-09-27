@@ -24,7 +24,7 @@ import { closest } from 'utils/DOM'
 
 const UTILITY_KEYS = [ 91, 17, 16 ]
 
-const RESIZE_CHANGE_THRESHOLD = 50
+const RESIZE_CHANGE_THRESHOLD = 100
 
 const AppView = AbstractView.extend({
   template: 'naaw-app',

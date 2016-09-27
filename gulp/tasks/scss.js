@@ -32,7 +32,7 @@ gulp.task('scss', [ 'images' ], () => {
     .pipe(!global.isProduction ? sourcemaps.init() : gutil.noop())
     .pipe(sass())
     .on('error', handleErrors)
-    .pipe(prefix({ browsers: [ 'last 2 versions', 'IE 9' ] }))
+    .pipe(prefix({ browsers: [ 'last 3 versions', 'IE 9' ] }))
     .pipe(rename(nameOutput))
     .pipe(global.isProduction ? cleanCSS({ restructuring: false }) : gutil.noop())
     .pipe(!global.isProduction ? sourcemaps.write() : gutil.noop())
