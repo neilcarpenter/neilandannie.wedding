@@ -1,6 +1,7 @@
 import compileTemplate from '../../utils/templateCompiler'
 import getPageMarkup from '../../utils/getPageMarkup'
 
+import content from './content.tmpl'
 import { neilAndAnnie, neilAndAnnieExtension, wedding } from '../../gridContent'
 
 export function getPageHtml (version) {
@@ -18,10 +19,12 @@ export function getPageHtml (version) {
   return getPageMarkup({
     title: 'Gallery page',
     pageContent: compileTemplate('pages/Gallery', {
-      version
+      version,
+      content
     }),
     gridContent,
-    version
+    version,
+    isGallery: true
   })
 }
 

@@ -53,7 +53,7 @@ export default `
     data-naaw-app
     data-naaw-tmpl='naaw-app'
     data-app-model='<%= JSON.stringify(config) %>'
-    class="<%= isHome ? 'is-home' : '' %>">
+    class="<%= isHome ? 'is-home' : '' %> <%= isGallery ? 'is-gallery' : '' %>">
     <%= header %>
     <%= main %>
     <%= galleryGrid %>

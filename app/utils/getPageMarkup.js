@@ -51,7 +51,8 @@ function _getHtmlVars (vars = {}) {
       homePath: appConfig.homePath,
       routeBlacklist: []
     },
-    isHome: vars.isHome
+    isHome: vars.isHome,
+    isGallery: vars.isGallery,
   }
 
   const htmlVars = pick(vars, Object.keys(htmlDefaults))

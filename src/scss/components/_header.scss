@@ -19,6 +19,10 @@
     top: 50%;
     right: 50%;
     pointer-events: none;
+  }
+
+  .is-home &,
+  .is-gallery & {
     filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
 
     path {

@@ -10,7 +10,8 @@
   // background: $colour--one;
   // background: #fdf1f1;
 
-  .is-home & {
+  .is-home &,
+  .is-gallery & {
     pointer-events: all;
   }
 
@@ -136,6 +137,10 @@
     filter: sepia(0.3) brightness(0.3);
     // filter: sepia(0.3) brightness(0.6);
     opacity: 1;
+
+    .is-gallery & {
+      filter: sepia(0.3) brightness(0.5);
+    }
   }
 }
 

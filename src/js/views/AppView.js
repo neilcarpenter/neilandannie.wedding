@@ -19,6 +19,7 @@ import Wrapper from 'views/core/Wrapper'
 import GalleryGrid from 'views/components/GalleryGrid'
 import GalleryGridModal from 'views/components/GalleryGridModal'
 import HomeView from 'views/pages/Home'
+import GalleryView from 'views/pages/Gallery'
 
 import { closest } from 'utils/DOM'
 
@@ -130,7 +131,10 @@ const AppView = AbstractView.extend({
   onPageOrAnchorChange() {},
 
   onViewChangeStart() {
-    setTimeout(this.checkForHomepage.bind(this), 500)
+    setTimeout(() => {
+      this.checkForHomepage()
+      this.checkForGalleryPage()
+    }, 500)
   },
 
   onScroll(e) {
@@ -218,6 +222,11 @@ const AppView = AbstractView.extend({
   checkForHomepage () {
     const classChange = this.wrapper.currentView instanceof HomeView ? 'add' : 'remove'
     this.el.classList[classChange]('is-home')
+  },
+
+  checkForGalleryPage () {
+    const classChange = this.wrapper.currentView instanceof GalleryView ? 'add' : 'remove'
+    this.el.classList[classChange]('is-gallery')
   }
 })
 

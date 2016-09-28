@@ -5,6 +5,8 @@ import domify from 'domify'
 
 import AppRouter from 'router/AppRouter'
 import AppView from 'views/AppView'
+import HomeView from 'views/pages/Home'
+import GalleryView from 'views/pages/Gallery'
 import GridContentModel from 'models/GridContentModel'
 import Channel from 'common/Channel'
 import Constants from 'common/Constants'
@@ -87,25 +89,24 @@ const GalleryGrid = AbstractView.extend({
   },
 
   buildGrid() {
-    const appRouter = AppRouter.getInstance()
     const appView = AppView.getInstance()
     const gridContentModel = GridContentModel.getInstance()
     const currentSize = this._getGridItemSize()
     const colCount = this._getColCount()
     const itemCount = Math.round((this.dimensions.innerWidth / currentSize) * Math.ceil(appView.dimensions.height / currentSize))
 
-    const isHome = !appRouter.current.route
+    const isFullPage = appView.wrapper.currentView instanceof HomeView || appView.wrapper.currentView instanceof GalleryView
     const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
 
     for (let i = 0; i < itemCount; i++) {
       const item = gridContentModel.getNextItem(gridContentKeys)
-      if (this._canRenderItem(i, isHome)) {
-        this.addGridItem(item, currentSize, i, isHome)
+      if (this._canRenderItem(i, isFullPage)) {
+        this.addGridItem(item, currentSize, i, isFullPage)
       }
     }
   },
 
-  addGridItem(contentItem, currentSize, index, isHome) {
+  addGridItem(contentItem, currentSize, index, isFullPage) {
     const colCount = this._getColCount()
     const colour = 'one'
     const row = Math.floor(index / colCount) % 2 !== 0 ? 'even' : 'odd'
@@ -131,7 +132,7 @@ const GalleryGrid = AbstractView.extend({
       top
     }))
 
-    if (!isHome) setTransform(item, `scale(${random(0.9, 1)})`)
+    if (!isFullPage) setTransform(item, `scale(${random(0.9, 1)})`)
 
     this.currentItems.push(item)
     this.gridInner.appendChild(item)
@@ -161,13 +162,13 @@ const GalleryGrid = AbstractView.extend({
     }
   },
 
-  _canRenderItem(index, isHome) {
+  _canRenderItem(index, isFullPage) {
     const colCount = this._getColCount()
     const state = MediaQueries.getDeviceState()
     let shouldRenderLayout = false
     let shouldRenderChance = false
 
-    if (isHome) {
+    if (isFullPage) {
       shouldRenderLayout = true
     } else if (state === MediaQueries.DEFAULT) {
       shouldRenderLayout = (index % colCount < 1)
@@ -177,7 +178,7 @@ const GalleryGrid = AbstractView.extend({
       shouldRenderLayout = (index % colCount < 3 || index % colCount > 5) && (Math.floor(index / colCount) > 0 || index % colCount < 3)
     }
 
-    if (index === 0 || Math.random() > 0.333 || state === MediaQueries.DEFAULT || isHome) {
+    if (index === 0 || Math.random() > 0.333 || state === MediaQueries.DEFAULT || isFullPage) {
       shouldRenderChance = true
     }
 
