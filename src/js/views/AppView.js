@@ -130,7 +130,7 @@ const AppView = AbstractView.extend({
   onPageOrAnchorChange() {},
 
   onViewChangeStart() {
-    this.checkForHomepage()
+    setTimeout(this.checkForHomepage.bind(this), 500)
   },
 
   onScroll(e) {
