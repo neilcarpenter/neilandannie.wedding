@@ -154,7 +154,8 @@
   font-weight: 700;
   transition: all .3s ease-in-out;
 
-  .is-home & {
+  .is-home &,
+  .is-gallery & {
     color: $white;
     border-color: transparent;
     filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
@@ -175,6 +176,10 @@
   .no-touchevents &:hover,
   &.is-active {
     border-bottom: 2px solid $black;
+  }
+
+  .is-gallery &.is-active {
+    border-bottom: 2px solid $white;
   }
 }
 

@@ -1,0 +1,134 @@
+.page.page-gallery {
+  z-index: 2;
+  position: absolute;
+  top: 0;
+  margin: 0;
+  right: 0;
+  width: 40%;
+  height: 100%;
+  padding: 0;
+  transition: all .3s ease-in-out;
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(253, 241, 241, 0.9);
+    transform: skewX(-5deg);
+    transform-origin: bottom;
+    transition: all .3s ease-in-out;
+  }
+
+  @include narrower-than(tabletlandscape) {
+    width: 60%;
+  }
+
+  @include narrower-than(tabletportrait) {
+    width: 90%;
+  }
+
+  &.gallery-message-hidden {
+    transform: translate3d(100%, 0, 0);
+
+    &:after {
+      opacity: 0;
+    }
+  }
+}
+
+.gallery-page--content {
+  position: relative;
+  z-index: 1;
+  margin-top: 120px;
+  padding: 0 70px 0 140px;
+  transition: all .3s ease-in-out;
+
+  @include narrower-than(desktop) {
+    padding: 0 50px 0 100px;
+  }
+
+  @include narrower-than(tabletlandscape) {
+    margin-top: $header--height-small;
+  }
+
+  @include narrower-than(tabletportrait) {
+    padding: 0 40px 0 80px;
+  }
+
+  .gallery-message-hidden & {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.gallery-content-toggle {
+  display: block;
+  position: absolute;
+  z-index: 5;
+  left: 10px;
+  top: 90%;
+  transform: translate(-50%, -50%);
+  padding: 4px 5px 6px;
+  background: rgb(253, 241, 241);
+  white-space: nowrap;
+  z-index: 2;
+  font-family: $ff-amatica;
+  font-size: 1.7rem;
+  font-weight: 700;
+  cursor: pointer;
+  border-top: 3px solid $black;
+  border-bottom: 3px solid $black;
+  transition: all .15s ease-in-out;
+
+  @include narrower-than(tabletportrait) {
+    transform: translate(0, -50%);
+  }
+
+  &:after,
+  &:before {
+    content: '';
+    position: absolute;
+    bottom: -3px;
+    width: 20px;
+    height: 100%;
+    transform: skewX(-5deg);
+    background: rgb(253, 241, 241);
+    border-top: 3px solid $black;
+    border-bottom: 3px solid $black;
+    box-sizing: content-box;
+    transition: all .15s ease-in-out;
+  }
+
+  &:after {
+    left: 0;
+    margin-left: -18px;
+    border-left: 3px solid $black;
+  }
+
+  &:before {
+    right: 0;
+    margin-right: -18px;
+    border-right: 3px solid $black;
+  }
+
+  .no-touchevents & {
+
+    &:hover {
+      color: rgb(253, 241, 241);
+      background: $black;
+
+      &:after,
+      &:before {
+        background: $black;
+      }
+    }
+  }
+
+  .gallery-message-hidden & {
+    left: -10px;
+    transform: translate(-100%, -50%);
+  }
+}

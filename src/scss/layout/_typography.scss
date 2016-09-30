@@ -342,7 +342,7 @@ p,
   text-align: center;
 }
 
-.page-general {
+.page {
   @extend %p-standard;
 
   .p--module & {
