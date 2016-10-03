@@ -236,3 +236,25 @@
     left: 10px;
   }
 }
+
+.header--loader {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  z-index: $z-index-header + 1;
+  font-family: $ff-amatica;
+  font-size: 2rem;
+  font-weight: 700;
+  transition: all .3s ease-in-out;
+  color: $white;
+  filter: drop-shadow(1px 1px 0 rgba(0, 0, 0, 0.5));
+  transform: translate3d(150%, 0, 0) skewX(5deg);
+  opacity: 0;
+  visibility: hidden;
+
+  &.show {
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+}

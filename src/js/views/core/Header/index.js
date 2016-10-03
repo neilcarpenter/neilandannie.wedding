@@ -53,6 +53,7 @@ const Header = AbstractView.extend({
     this.listenTo(Channel, Constants.EVENT_HIDE_GLOBAL_LOADING, this.onGlobalLoadingHide)
 
     this.navLinks = this.queryAll('[data-nav-link]')
+    this.loader = this.query('[data-loader]')
 
     this.getDimensions()
   },
@@ -85,9 +86,13 @@ const Header = AbstractView.extend({
     this.setActiveLink()
   },
 
-  onGlobalLoadingShow() {},
+  onGlobalLoadingShow() {
+    this.loader.classList.add('show')
+  },
 
-  onGlobalLoadingHide() {},
+  onGlobalLoadingHide() {
+    this.loader.classList.remove('show')
+  },
 
   onBurgerClick() {
     if (this.mobileMenuOpen) {

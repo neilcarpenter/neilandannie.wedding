@@ -28,5 +28,8 @@ export default `
       <span class="label label-open">Menu</span>
       <span class="label label-closed">Close</span>
     </span>
+    <span class="header--loader" data-loader>
+      Loading...
+    </span>
   </header>
 `
