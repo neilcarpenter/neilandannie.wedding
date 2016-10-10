@@ -1,10 +1,13 @@
+$logo-width: 138.979700319;
+$logo-height: 154;
+
 .header {}
 
 .header--logo {
   position: fixed;
-  max-width: 80%;
-  width: #{197 * .5}px;
-  height: #{154 * .5}px;
+  max-height: 40%;
+  width: #{$logo-width * .4}px;
+  height: #{$logo-height * .4}px;
   top: 50px;
   right: 80px;
   transform: translate(50%, -50%);
@@ -14,8 +17,8 @@
   filter: drop-shadow(1px 1px 0 rgba(253, 241, 241, 0.5));
 
   .is-home & {
-    width: #{197 * 2.5}px;
-    height: #{154 * 2.5}px;
+    width: #{$logo-width * 2}px;
+    height: #{$logo-height * 2}px;
     top: 50%;
     right: 50%;
     pointer-events: none;
@@ -46,8 +49,29 @@
   @include narrower-than(tabletlandscape) {
     right: 45px;
     top: 40px;
-    width: #{197 * .3}px;
-    height: #{154 * .3}px;
+    width: #{$logo-width * .3}px;
+    height: #{$logo-height * .3}px;
+  }
+}
+
+.header--logo-subtitle {
+  position: absolute;
+  font-family: $ff-amatica;
+  font-size: 2rem;
+  font-weight: 700;
+  text-align: center;
+  color: $white;
+  top: 100%;
+  left: 50%;
+  width: 100%;
+  transform: translate(-50%, 50px) scaleY(1.1);
+  transition: all .3s ease-in-out;
+  opacity: 0;
+
+  .is-home & {
+    opacity: 1;
+    transform: translate(-50%, 30px);
+    transition-delay: 0.5s;
   }
 }
 
@@ -238,7 +262,7 @@
 }
 
 .header--loader {
-  position: absolute;
+  position: fixed;
   bottom: 20px;
   right: 20px;
   z-index: $z-index-header + 1;

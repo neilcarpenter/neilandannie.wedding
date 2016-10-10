@@ -7,6 +7,11 @@ export default `
       <a href="/">
         <%= logoSvg %>
       </a>
+      <span class="header--logo-subtitle">
+        Wedding time<br>
+        5 August 2017<br>
+        The Great Barn, Rolvenden
+      </span>
     </h1>
     <nav class="header--nav">
       <ul class="unstyled">
