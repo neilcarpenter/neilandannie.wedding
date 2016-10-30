@@ -115,9 +115,10 @@ const Header = AbstractView.extend({
   setActiveLink() {
     const appRouter = AppRouter.getInstance()
     const appModel = AppModel.getInstance()
+    const activePath = appRouter.current.route || ""
     this.navLinks.forEach(link => {
       const linkPath = link.href.split(`${appModel.get('baseUrl')}/`)[1]
-      const classChange = appRouter.current.route.match(linkPath) ? 'add' : 'remove'
+      const classChange = activePath.match(linkPath) ? 'add' : 'remove'
       link.classList[classChange]('is-active')
     })
   }
