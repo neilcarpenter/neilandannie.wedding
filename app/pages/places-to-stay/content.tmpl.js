@@ -37,8 +37,8 @@ export default `
     Rolvenden<br>
     Cranbrook<br>
     TN17 4PB<br>
-    <a href="http://thebullinnrolvenden.co.uk" target="_blank">www.thebullinnrolvenden.co.uk</a> – no info on pub website but contactable through the pub.
-    (1.5 miles from the wedding venue)</p>
+    <a href="http://thebullinnrolvenden.co.uk" target="_blank">www.thebullinnrolvenden.co.uk</a><br>
+    <small>No info on pub website but contactable through the pub. (1.5 miles from the wedding venue)</small></p>
 
   <p><b>The White Lion</b><br>
     57 High St<br>
@@ -52,7 +52,8 @@ export default `
     Rolvenden<br>
     Cranbrook<br>
     TN17 4JL<br>
-    <a href="http://www.littlehaldenfarm.co.uk" target="_blank">www.littlehaldenfarm.co.uk</a> (0.7 miles from the wedding venue – just about staggering distance!)</p>
+    <a href="http://www.littlehaldenfarm.co.uk" target="_blank">www.littlehaldenfarm.co.uk</a><br>
+    <small>(0.7 miles from the wedding venue – just about staggering distance!)</small></p>
 
   <h4>NEAREST HOTELS</h4>
   <p><b>The Woolpack Hotel</b><br>
@@ -71,15 +72,16 @@ export default `
     Stone St<br>
     Cranbrook<br>
     England<br>
-    TN173HE</p>
+    TN173HE<br>
+    <a href="http://www.thegeorgehotelkent.co.uk/" target="_blank">www.thegeorgehotelkent.co.uk</a></p>
 
   <p><b>Peek Lodge Hotel</b><br>
     Goddards Green Rd<br>
     Benenden<br>
     Cranbrook<br>
     TN17 4AY<br>
-    NB: Unusual....located within the grounds of a private hospital but offering Weekend Bed & Breakfast on Friday and Saturday nights (subject to availability).
-    £32 single room per night/ £64 double room per night/ £80 per night for a family room - <a href="http://www.benendenhospital.org.uk/Facilities/Non-Medical-Facilities/peek-lodge.aspx" target="_blank">more information here</a></p>
+    <a href="http://www.benendenhospital.org.uk/Facilities/Non-Medical-Facilities/peek-lodge.aspx" target="_blank">Website here</a><br>
+    <small>NB: Unusual....located within the grounds of a private hospital but offering Weekend Bed & Breakfast on Friday and Saturday nights (subject to availability). £32 single room per night/ £64 double room per night/ £80 per night for a family room</small></p>
 
   <h4>HOTELS IN ASHFORD</h4>
   <p><b>Premier Inn Ashford Central</b><br>

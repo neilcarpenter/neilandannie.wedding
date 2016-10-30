@@ -1,8 +1,8 @@
 export default `
   <div class="gallery-page--content">
     <h1>All about us</h1>
-    <p>I am the content for the places to stay page!</p>
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim praesentium in, tempora sed, molestias quo, tempore commodi vitae accusantium quod sequi officia, asperiores expedita tenetur est doloremque possimus aliquid. Quos.</p>
-    <p>Ut distinctio, ex velit asperiores saepe cupiditate expedita quasi sequi, quas officiis blanditiis numquam, odio suscipit corporis ratione. Ipsa architecto assumenda aspernatur veniam culpa eum, accusantium est laudantium, sapiente. Dignissimos?</p>
+    <p>This page shows a collection of memories from our 10+ years together, as well as a load of places, people and things which mean a lot to use.</p>
+    <p>Click or tap on a tile to view full screen and find out more!</p>
+    <p><small>You can toggle the display of this message using the "Hide message" and "Show message" buttons below.</small></p>
   </div>
 `

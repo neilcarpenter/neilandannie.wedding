@@ -1,11 +1,11 @@
 export default `
   <h1>Ceremony and reception</h1>
   <h4>When</h4>
-  <p>SATURDAY 5th August 2017<br>
-    CEREMONY: 1.30PM<br>
-    FOOD AND SPEECHES: 4PM<br>
-    DANCING: 6.30PM<br>
-    HOMETIME: 11.30PM</p>
+  <p><b>SATURDAY</b> 5th August 2017<br>
+    <b>CEREMONY:</b> 1.30PM<br>
+    <b>FOOD AND SPEECHES:</b> 4PM<br>
+    <b>DANCING:</b> 6.30PM<br>
+    <b>HOMETIME:</b> 11.30PM</p>
 
   <h4>Where</h4>
   <p>The Great Barn<br>
@@ -16,5 +16,5 @@ export default `
     TN17 4JG<br>
     <a href="https://www.google.co.uk/maps/place/The+Great+Barn/@51.0717774,0.6376905,15z/data=!4m2!3m1!1s0x0:0x9192021fdde6e3e4?sa=X&ved=0ahUKEwj1xrT3pILQAhVBDsAKHd3bBWoQ_BIIdDAK" target="_blank">Google map</a></p>
 
-  <p><b>Check out the <a href="/about">about page</a> for travel information and answers to any common questions you might have!</b></p>
+  <p><small>Check out the <a href="/about">about page</a> for travel information and answers to any common questions you might have!</small></p>
 `
