@@ -18,6 +18,7 @@ export function getPageHtml (version) {
     title: 'RSVP evening page',
     pageContent: compileTemplate('pages/Rsvp', {
       version,
+      content: '',
       form: compileTemplate('components/FormEmbed', { version: 2 })
     }),
     gridContent,

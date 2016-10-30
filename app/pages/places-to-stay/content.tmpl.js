@@ -3,7 +3,7 @@ export default `
   <p>Please note these places have been identified by trawling the internet. We haven’t checked their suitability, availability or cost. Virtually all of the listings below are a taxi ride away from the wedding venue.</p>
 
   <h4>B&B</h4>
-  <p><b>1 Maytham Cottages</b><br>
+  <p><b>Great Maytham Cottage</b><br>
     Frogs Lane<br>
     Rolvenden Layne<br>
     Cranbrook<br>
