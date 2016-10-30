@@ -16,7 +16,7 @@ export function getPageHtml (version) {
   }
 
   return getPageMarkup({
-    title: 'RSVP ceremony page',
+    title: 'RSVP for all day guests - Annie and Neil, wedding time',
     pageContent: compileTemplate('pages/Rsvp', {
       version,
       content,
@@ -27,8 +27,8 @@ export function getPageHtml (version) {
   })
 }
 
-function rsvpCeremony (req, res) {
+function rsvpAllDay (req, res) {
   return res.send(getPageHtml(req.params.version))
 }
 
-export default rsvpCeremony
+export default rsvpAllDay

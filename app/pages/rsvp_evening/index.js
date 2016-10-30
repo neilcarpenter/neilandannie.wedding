@@ -16,7 +16,7 @@ export function getPageHtml (version) {
   }
 
   return getPageMarkup({
-    title: 'RSVP evening page',
+    title: 'RSVP for evening guests - Annie and Neil, wedding time',
     pageContent: compileTemplate('pages/Rsvp', {
       version,
       content,
