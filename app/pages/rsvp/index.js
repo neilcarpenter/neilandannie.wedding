@@ -17,10 +17,9 @@ export function getPageHtml (version) {
 
   return getPageMarkup({
     title: 'RSVP - Annie and Neil, wedding time',
-    pageContent: compileTemplate('pages/Rsvp', {
+    pageContent: compileTemplate('pages/General', {
       version,
-      content,
-      form: compileTemplate('components/FormEmbed', { version: 2 })
+      content
     }),
     gridContent,
     version

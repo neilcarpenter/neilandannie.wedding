@@ -1,6 +1,7 @@
 import compileTemplate from '../../utils/templateCompiler'
 import getPageMarkup from '../../utils/getPageMarkup'
 
+import content from './content.tmpl'
 import { neilAndAnnie, wedding } from '../../gridContent'
 
 export function getPageHtml (version) {
@@ -18,7 +19,7 @@ export function getPageHtml (version) {
     title: 'RSVP evening page',
     pageContent: compileTemplate('pages/Rsvp', {
       version,
-      content: '',
+      content,
       form: compileTemplate('components/FormEmbed', { version: 2 })
     }),
     gridContent,

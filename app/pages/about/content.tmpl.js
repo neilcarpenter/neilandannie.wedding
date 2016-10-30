@@ -43,4 +43,7 @@ export default `
   <h4>Shall I bring a present?</h4>
   <p>We don’t expect gifts, but we know that some guests will want to get us something, for which we are really grateful.</p>
   <p>We’ve set up a gift list with xxxx where you can contribute to our honeymoon or buy us a present if you’d prefer.</p>
+
+  <h4>I have another question but I can't find an answer on here...</h4>
+  <p>Then just email Neil on <a href="mailto:neilanthonycarpenter@gmail.com">neilanthonycarpenter@gmail.com</a> and we will help you out!</p>
 `
