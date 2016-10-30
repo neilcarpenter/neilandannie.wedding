@@ -81,7 +81,7 @@ export default `
     NB: Unusual....located within the grounds of a private hospital but offering Weekend Bed & Breakfast on Friday and Saturday nights (subject to availability).
     £32 single room per night/ £64 double room per night/ £80 per night for a family room - <a href="http://www.benendenhospital.org.uk/Facilities/Non-Medical-Facilities/peek-lodge.aspx" target="_blank">more information here</a></p>
 
-  <h4>HOTELS IN ASHORD</h4>
+  <h4>HOTELS IN ASHFORD</h4>
   <p><b>Premier Inn Ashford Central</b><br>
     Orbital Business Park<br>
     Hall Avenue<br>

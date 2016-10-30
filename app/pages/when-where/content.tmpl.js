@@ -13,7 +13,7 @@ export default `
     Halden Lane<br>
     Rolvenden<br>
     Kent <br>
-    TN17 4JG
+    TN17 4JG<br>
     <a href="https://www.google.co.uk/maps/place/The+Great+Barn/@51.0717774,0.6376905,15z/data=!4m2!3m1!1s0x0:0x9192021fdde6e3e4?sa=X&ved=0ahUKEwj1xrT3pILQAhVBDsAKHd3bBWoQ_BIIdDAK" target="_blank">Google map</a></p>
 
   <p><b>Check out the <a href="/about">about page</a> for travel information and answers to any common questions you might have!</b></p>
