@@ -16,7 +16,7 @@ export function getPageHtml (version) {
   }
 
   return getPageMarkup({
-    title: 'About page',
+    title: 'About - Annie and Neil, wedding time',
     pageContent: compileTemplate('pages/General', {
       version,
       content

@@ -420,7 +420,7 @@ p,
   ol {
     list-style: none;
     margin: 0;
-    padding: 0 0 0 36px;
+    padding: 0 0 0 24px;
 
     li {
       color: $black;
@@ -431,14 +431,15 @@ p,
   ul {
     li {
       &:before {
-        background-color: $blue-3;
+        background-color: $black;
         border-radius: 100%;
         content: '';
-        left: -36px;
+        left: -24px;
         position: absolute;
-        top: 12px;
-        height: 12px;
-        width: 12px;
+        top: 45%;
+        height: 6px;
+        width: 6px;
+        transform: translate(0, -50%);
       }
     }
   }

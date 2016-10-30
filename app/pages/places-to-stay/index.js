@@ -15,7 +15,7 @@ export function getPageHtml (version) {
   }
 
   return getPageMarkup({
-    title: 'Placed to stay page',
+    title: 'Places to stay - Annie and Neil, wedding time',
     pageContent: compileTemplate('pages/General', {
       version,
       content

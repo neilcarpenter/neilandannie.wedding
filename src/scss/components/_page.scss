@@ -12,6 +12,7 @@
   opacity: 0;
   visibility: hidden;
   transform: skewX(-5deg) translate3d(-10%, 0, 0);
+  transform-origin: top center;
   transition: all .3s ease-out;
 
   &.is-animating-in {

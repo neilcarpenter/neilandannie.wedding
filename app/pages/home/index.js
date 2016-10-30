@@ -16,7 +16,7 @@ export function getPageHtml (version) {
   }
 
   return getPageMarkup({
-    title: 'Homepage',
+    title: 'Annie and Neil, wedding time',
     isHome: true,
     pageContent: compileTemplate('pages/Home', {
       version
