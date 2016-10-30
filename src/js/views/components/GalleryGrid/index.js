@@ -83,7 +83,10 @@ const GalleryGrid = AbstractView.extend({
   },
 
   reset() {
-    this.currentItems.forEach(item => this.gridInner.removeChild(item))
+    this.currentItems.forEach(item => {
+      clearTimeout(item.timer)
+      this.gridInner.removeChild(item.el)
+    })
     this.currentItems = []
     this.buildGrid()
   },
@@ -104,13 +107,15 @@ const GalleryGrid = AbstractView.extend({
         this.addGridItem(item, currentSize, i, isFullPage)
       }
     }
+
+    // this.startItemTimers()
   },
 
-  addGridItem(contentItem, currentSize, index, isFullPage) {
+  addGridItem(contentItem, currentSize, index, isFullPage, config={}) {
     const colCount = this._getColCount()
     const colour = 'one'
     const row = Math.floor(index / colCount) % 2 !== 0 ? 'even' : 'odd'
-    const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
+    const hideDirection = config.hideDirection || shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
 
     const classNames = [
       `colour--${colour}`,
@@ -120,10 +125,11 @@ const GalleryGrid = AbstractView.extend({
     const slug = contentItem.slug
     const imgSrc = contentItem.source
     const width = currentSize
-    const left = (index % colCount) * currentSize
-    const top = Math.floor(index / colCount) * currentSize
+    const left = config.left || (index % colCount) * currentSize
+    const top = config.top || Math.floor(index / colCount) * currentSize
+    const delay = typeof config.delay === 'number' ? config.delay : random(150, 1000)
 
-    const item = domify(this.itemTmpl({
+    const el = domify(this.itemTmpl({
       classNames,
       slug,
       imgSrc,
@@ -132,14 +138,48 @@ const GalleryGrid = AbstractView.extend({
       top
     }))
 
-    if (!isFullPage) setTransform(item, `scale(${random(0.9, 1)})`)
+    if (!isFullPage) setTransform(el, `scale(${random(0.9, 1)})`)
+
+    const item = { el, left, top }
 
     this.currentItems.push(item)
-    this.gridInner.appendChild(item)
+    this.gridInner.appendChild(item.el)
 
     setTimeout(() => {
-      item.classList.remove('hide', `hide--${hideDirection}`)
-    }, random(150, 1000))
+      item.el.classList.remove('hide', `hide--${hideDirection}`)
+    }, delay)
+  },
+
+  replaceGridItem(item) {
+    // @TODO - set this as a timer and clear on page change
+    const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
+    const oppositeDirection = this._getOppositeDirection(hideDirection)
+
+    this.animateItemOut(item, null, hideDirection, () => {
+
+      const appView = AppView.getInstance()
+      const gridContentModel = GridContentModel.getInstance()
+      const currentSize = this._getGridItemSize()
+      const isFullPage = appView.wrapper.currentView instanceof HomeView || appView.wrapper.currentView instanceof GalleryView
+      const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
+
+      const i = this.currentItems.indexOf(item)
+
+      const newItem = gridContentModel.getNextItem(gridContentKeys)
+      if (this._canRenderItem(i, isFullPage)) {
+        const config = {
+          top: item.top,
+          left: item.left,
+          hideDirection: oppositeDirection,
+          delay: 50
+        }
+        this.addGridItem(newItem, currentSize, i, isFullPage, config)
+      }
+
+      // @TODO - make this work
+      // this.currentItems.splice(i, 1, newItem)
+
+    })
   },
 
   _getGridItemSize() {
@@ -185,21 +225,59 @@ const GalleryGrid = AbstractView.extend({
     return shouldRenderLayout && shouldRenderChance
   },
 
+  _getOppositeDirection(direction) {
+    let oppositeDirection
+    switch (direction) {
+      case 'top':
+        oppositeDirection = 'bottom'
+        break
+      case 'bottom':
+        oppositeDirection = 'top'
+        break
+      case 'left':
+        oppositeDirection = 'right'
+        break
+      case 'right':
+        oppositeDirection = 'left'
+        break
+    }
+    return oppositeDirection
+  },
+
   animateItemsOut(cb) {
+    this.stopItemTimers()
+
     let maxDelay = 0
-
     this.currentItems.forEach(item => {
-      const delay = random(0, 500)
-      const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
 
-      setTimeout(() => {
-        item.classList.add('hide', `hide--${hideDirection}`)
-      }, delay)
+      const delay = random(0, 500)
+      this.animateItemOut(item, delay)
 
       maxDelay = delay > maxDelay ? delay : maxDelay
     })
 
     setTimeout(cb, maxDelay + ITEM_TRANSITION_TIME)
+  },
+
+  animateItemOut(item, delay, direction, cb) {
+    delay = delay || random(0, 500)
+    const hideDirection = direction || shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
+
+    setTimeout(() => {
+      item.el.classList.add('hide', `hide--${hideDirection}`)
+      if (cb && typeof cb === 'function') cb()
+    }, delay)
+  },
+
+  startItemTimers() {
+    this.currentItems.forEach(item => {
+      const replaceItemDelay = random(2000, 15000)
+      item.timer = setTimeout(this.replaceGridItem.bind(this, item), replaceItemDelay)
+    })
+  },
+
+  stopItemTimers() {
+    this.currentItems.forEach(item => clearTimeout(item.timer))
   },
 
   onItemClick(e) {
