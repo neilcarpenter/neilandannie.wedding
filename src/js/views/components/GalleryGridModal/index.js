@@ -5,6 +5,7 @@ import AppView from 'views/AppView'
 import AppRouter from 'router/AppRouter'
 import Channel from 'common/Channel'
 import Constants from 'common/Constants'
+import MediaQueries from 'common/MediaQueries'
 import GridContentModel from 'models/GridContentModel'
 
 import AbstractView from 'views/abstract/AbstractView'
@@ -68,7 +69,9 @@ const GalleryGridModal = AbstractView.extend({
   },
 
   showItem(item, fromSwitch=true) {
-    this.activeItem = domify(this.itemTmpl({ item }))
+    const isMobile = MediaQueries.isSmallerThanBreakpoint(MediaQueries.TABLETPORTRAIT)
+
+    this.activeItem = domify(this.itemTmpl({ item, isMobile }))
     this.itemContainer.appendChild(this.activeItem)
 
     const delay = fromSwitch ? 100 : 250
