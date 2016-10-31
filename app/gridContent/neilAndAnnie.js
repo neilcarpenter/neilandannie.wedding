@@ -15,7 +15,7 @@ export default [
     source: '/assets/img/_placeholders/annie-ruby-violet.jpg',
     title: 'Annie loves Ruby Violet',
     location: 'Ruby Violet, Tufnell Park',
-    timestamp: '',
+    timestamp: 'Autumn 2014',
     comment_neil: '',
     comment_annie: ''
   },

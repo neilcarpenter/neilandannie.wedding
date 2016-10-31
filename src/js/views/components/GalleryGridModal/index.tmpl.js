@@ -3,7 +3,12 @@ export const modalItem = `
     <div class="gallery-grid--modal-text">
       <h2><%= item.title %></h2>
       <% if (item.location) { %>
-        <h3><%= item.location %></h3>
+        <h3>
+          <%= item.location %>
+          <% if (item.timestamp) { %>
+            <span> - <%= item.timestamp %></span>
+          <% } %>
+        </h3>
       <% } %>
     </div>
     <div class="gallery-grid--modal-media">

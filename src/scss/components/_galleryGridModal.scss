@@ -194,4 +194,11 @@
   h2 {
     @extend .h3;
   }
+
+  h3 {
+
+    span {
+      color: $black-opa-5;
+    }
+  }
 }
