@@ -2,9 +2,9 @@
 
 ### TODO
 
-[~] Loading state
+[x] Loading state
 [x] Gallery page slightly different UI
-[ ] Sort RSVP
+[x] Sort RSVP
 [~] Switch out grid items randomly on timer
 [ ] Progressively load grid item assets, only show once loaded
 [ ] Grid items / modal to take multiple media types

@@ -103,6 +103,7 @@
   opacity: 0;
   visibility: hidden;
   transition-delay: 0.2s;
+  background: $black;
 
   [data-align="right"] & {
     left: 0;
@@ -189,6 +190,10 @@
     bottom: 0;
     transform: none !important;
     padding: 10px 20px 0;
+
+    .hide-text & {
+      transform: translate3d(0, 100%, 0) !important;
+    }
   }
 
   h2 {
@@ -196,9 +201,80 @@
   }
 
   h3 {
+    margin-bottom: 30px;
 
     span {
       color: $black-opa-5;
+    }
+  }
+
+  p {
+    font-style: italic;
+    position: relative;
+
+    &:nth-of-type(odd) {
+      padding-left: 70px;
+
+      .name-label {
+        left: 0;
+      }
+    }
+
+    &:nth-of-type(even) {
+      padding-right: 70px;
+      text-align: right;
+
+      .name-label {
+        right: 0;
+      }
+    }
+
+    .name-label {
+      font-style: normal;
+      position: absolute;
+      top: 50%;
+      transform: translate(0, -50%);
+      font-family: $ff-amatica;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+
+    .quote-mark {
+      font-family: $ff-amatica;
+      font-size: 2rem;
+      font-weight: 700;
+    }
+  }
+
+  .toggle-text-btn {
+    display: none;
+    position: absolute;
+    bottom: 100%;
+    background: rgba(253, 241, 241, 0.8);
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    font-weight: 700;
+
+    &:after {
+      content: '^';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      height: 15px;
+      transform: translate(-50%, -50%) rotate(180deg);
+      transition: all .3s ease-out;
+    }
+
+    @include narrower-than(tabletportrait) {
+      display: block;
+
+      .hide-text & {
+
+        &:after {
+          transform: translate(-50%, -50%);
+        }
+      }
     }
   }
 }

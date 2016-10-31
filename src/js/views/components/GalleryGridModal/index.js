@@ -16,7 +16,8 @@ const GalleryGridModal = AbstractView.extend({
 
   events: {
     'click [data-close-btn]': 'onCloseClick',
-    'click [data-random-btn]': 'onRandomClick'
+    'click [data-random-btn]': 'onRandomClick',
+    'click [data-toggle-text-btn]': 'onTextToggleClick'
   },
 
   constructor() {
@@ -112,6 +113,10 @@ const GalleryGridModal = AbstractView.extend({
 
     this.switchItems(nextItem)
     appRouter.changeAnchor(nextItem.slug)
+  },
+
+  onTextToggleClick() {
+    this.itemContainer.classList.toggle('hide-text')
   },
 
   onKeyUp(e) {

@@ -16,7 +16,7 @@ export default [
     title: 'Camping Dinner',
     location: 'Isle of Wight',
     timestamp: '',
-    comment_neil: '',
-    comment_annie: ''
+    comment_neil: 'Comment Neil',
+    comment_annie: 'Comment Annie'
   }
 ]

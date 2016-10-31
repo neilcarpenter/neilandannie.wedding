@@ -10,6 +10,19 @@ export const modalItem = `
           <% } %>
         </h3>
       <% } %>
+      <% if (item.comment_neil) { %>
+        <p>
+          <span class="quote-mark">“</span><%= item.comment_neil %>
+          <span class="name-label">Neil</span>
+        </p>
+      <% } %>
+      <% if (item.comment_annie) { %>
+        <p>
+          <span class="quote-mark">“</span><%= item.comment_annie %>
+          <span class="name-label">Annie</span>
+        </p>
+      <% } %>
+      <span class="toggle-text-btn" data-toggle-text-btn></span>
     </div>
     <div class="gallery-grid--modal-media">
       <img class="img--object-fit" src="<%= item.source %>" alt="<%= item.title %>">
