@@ -1,12 +1,1 @@
-export default [
-  {
-    slug: 'barn-orchard',
-    type: 'image',
-    source: '/assets/img/_placeholders/barn-orchard.jpg',
-    title: 'The Great Barn and Orchard',
-    location: 'Rolvenden',
-    timestamp: '',
-    comment_neil: '',
-    comment_annie: ''
-  }
-]
+export default [{"title":"Barn Orchard","location":"","timestamp":"","comment_annie":"","comment_neil":"","slug":"barn-orchard","source":"/gridAssets/images/barn-orchard.jpg","thumbnail":"/gridAssets/thumbnails/barn-orchard.jpg"}]

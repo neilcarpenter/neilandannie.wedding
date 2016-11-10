@@ -1,12 +1,13 @@
 import compileTemplate from '../../utils/templateCompiler'
 import getPageMarkup from '../../utils/getPageMarkup'
+import sanitiseGridContent from '../../utils/sanitiseGridContent'
 
 import { neilAndAnnie, neilAndAnnieExtension, wedding } from '../../gridContent'
 
 export function getPageHtml (version) {
   version = version || 1
 
-  const gridContent = {
+  let gridContent = {
     _keys: [ neilAndAnnie.label, neilAndAnnieExtension.label, wedding.label ],
     data: [
       neilAndAnnie,
@@ -14,6 +15,7 @@ export function getPageHtml (version) {
       wedding
     ]
   }
+  gridContent = sanitiseGridContent(gridContent)
 
   return getPageMarkup({
     title: 'Annie and Neil, wedding time',

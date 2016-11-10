@@ -1,12 +1,1 @@
-export default [
-  {
-    slug: 'tenterden-high-street',
-    type: 'image',
-    source: '/assets/img/_placeholders/tenterden-high-street.jpg',
-    title: 'Tenterden High Street',
-    location: '',
-    timestamp: '',
-    comment_neil: '',
-    comment_annie: ''
-  }
-]
+export default [{"title":"Tenterden High Street","location":"","timestamp":"","comment_annie":"","comment_neil":"","slug":"tenterden-high-street","source":"/gridAssets/images/tenterden-high-street.jpg","thumbnail":"/gridAssets/thumbnails/tenterden-high-street.jpg"}]

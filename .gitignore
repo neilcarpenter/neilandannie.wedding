@@ -3,3 +3,6 @@ node_modules
 app/build/
 rev-manifest.json
 dploy.yaml
+service-account-key.json
+app/gridContent
+!app/gridContent/index.js

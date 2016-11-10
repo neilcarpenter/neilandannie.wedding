@@ -21,6 +21,7 @@ app.use(bodyParser.json())
   require(routePath).default(app)
 })
 
+app.use(express.static(path.join(__dirname, '/gridContent')))
 app.use(express.static(path.join(__dirname, '/build')))
 
 export default app

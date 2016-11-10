@@ -123,7 +123,7 @@ const GalleryGrid = AbstractView.extend({
       `row--${row}`
     ]
     const slug = contentItem.slug
-    const imgSrc = contentItem.source
+    const imgSrc = contentItem.thumbnail
     const width = currentSize
     const left = config.left || (index % colCount) * currentSize
     const top = config.top || Math.floor(index / colCount) * currentSize
