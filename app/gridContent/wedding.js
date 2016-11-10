@@ -1,1 +1,0 @@
-export default [{"title":"Barn Orchard","location":"","timestamp":"","comment_annie":"","comment_neil":"","slug":"barn-orchard","source":"/gridAssets/images/barn-orchard.jpg","thumbnail":"/gridAssets/thumbnails/barn-orchard.jpg"}]

@@ -1,1 +1,0 @@
-export default [{"title":"Tenterden High Street","location":"","timestamp":"","comment_annie":"","comment_neil":"","slug":"tenterden-high-street","source":"/gridAssets/images/tenterden-high-street.jpg","thumbnail":"/gridAssets/thumbnails/tenterden-high-street.jpg"}]
