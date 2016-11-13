@@ -1,6 +1,6 @@
 export default `
   <h1>Where is good to stay around there?</h1>
-  <p>Please note these places have been identified by trawling the internet. We haven’t checked their suitability, availability or cost. Virtually all of the listings below are a taxi ride away from the wedding venue.</p>
+  <p>Please note these places have been identified by trawling the internet and the local area. We haven’t checked their suitability, availability or cost. Virtually all of the listings below are a taxi ride away from the wedding venue.</p>
 
   <h4>B&B</h4>
   <p><b>Great Maytham Cottage</b><br>

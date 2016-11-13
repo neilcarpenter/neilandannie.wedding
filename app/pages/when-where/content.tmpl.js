@@ -3,7 +3,6 @@ export default `
   <h4>When</h4>
   <p><b>SATURDAY</b> 5th August 2017<br>
     <b>CEREMONY:</b> 1.30PM<br>
-    <b>FOOD AND SPEECHES:</b> 4PM<br>
     <b>DANCING:</b> 6.30PM<br>
     <b>HOMETIME:</b> 11.30PM</p>
 
