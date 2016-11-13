@@ -6,6 +6,8 @@ import findWhere from 'lodash.findwhere'
 const SPREADSHEET_ID = '1PnZiZKa_TZAOkmY5sXrVnYDOU_NkSIALUKEftFaYwKQ'
 const SERVICE_ACCOUNT_KEY = require('../service-account-key.json')
 
+const SLUGS = {}
+
 const CONTENT_TYPES = [
   {
     name: 'neilAndAnnie',
@@ -71,7 +73,14 @@ sheet.useServiceAccountAuth(SERVICE_ACCOUNT_KEY, (err) => {
           }
         }
 
-        rowItem.slug = slug(rowItem.title, { lower: true })
+        const sluggedTitle = slug(rowItem.title, { lower: true })
+        if (!SLUGS[sluggedTitle]) {
+          SLUGS[sluggedTitle] = 1
+          rowItem.slug = sluggedTitle
+        } else {
+          SLUGS[sluggedTitle]++
+          rowItem.slug = `${sluggedTitle}-${SLUGS[sluggedTitle]}`
+        }
         rowItem.source = `/gridAssets/${tabType}/${row.filename}`
         rowItem.thumbnail = `/gridAssets/thumbnails/${row.filename}`
 
