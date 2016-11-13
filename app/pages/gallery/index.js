@@ -12,8 +12,7 @@ export function getPageHtml (version) {
     _keys: [ neilAndAnnie.label, neilAndAnnieExtension.label, wedding.label ],
     data: [
       neilAndAnnie,
-      neilAndAnnieExtension,
-      wedding
+      neilAndAnnieExtension
     ]
   }
   gridContent = sanitiseGridContent(gridContent)
