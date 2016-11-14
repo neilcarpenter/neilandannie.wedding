@@ -70,8 +70,9 @@ const GalleryGridModal = AbstractView.extend({
 
   showItem(item, fromSwitch=true) {
     const isMobile = MediaQueries.isSmallerThanBreakpoint(MediaQueries.TABLETPORTRAIT)
+    const imageContain = isMobile || item.forceImageContain
 
-    this.activeItem = domify(this.itemTmpl({ item, isMobile }))
+    this.activeItem = domify(this.itemTmpl({ item, imageContain }))
     this.itemContainer.appendChild(this.activeItem)
 
     const delay = fromSwitch ? 100 : 250

@@ -25,7 +25,7 @@ export const modalItem = `
       <span class="toggle-text-btn" data-toggle-text-btn></span>
     </div>
     <div class="gallery-grid--modal-media">
-      <img class="<%= isMobile ? 'img--object-contain' : 'img--object-fit' %>" src="<%= item.source %>" alt="<%= item.title %>">
+      <img class="<%= imageContain ? 'img--object-contain' : 'img--object-fit' %>" src="<%= item.source %>" alt="<%= item.title %>">
     </div>
   </div>
 `
