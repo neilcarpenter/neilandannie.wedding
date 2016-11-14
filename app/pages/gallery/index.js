@@ -9,7 +9,7 @@ export function getPageHtml (version) {
   version = version || 1
 
   let gridContent = {
-    _keys: [ neilAndAnnie.label, neilAndAnnieExtension.label, wedding.label ],
+    _keys: [ neilAndAnnie.label, neilAndAnnieExtension.label ],
     data: [
       neilAndAnnie,
       neilAndAnnieExtension
