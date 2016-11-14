@@ -25,8 +25,8 @@ const GridContentModel = Model.extend({
       contentItem.data.forEach(item => {
         assign(item, {
           // loaded: false,
-          viewed: false,
-          random: false
+          viewedOnGrid: false,
+          viewedInModal: false
         })
       })
       this.set(contentItem.label, shuffle(contentItem.data))
@@ -62,7 +62,7 @@ const GridContentModel = Model.extend({
     return item
   },
 
-  getNextItem(keys, locator='viewed') {
+  getNextItem(keys, locator='viewedOnGrid') {
     const items = shuffle(this.getKeysContent(keys))
     const item = findWhere(items, { [locator]: false })
 

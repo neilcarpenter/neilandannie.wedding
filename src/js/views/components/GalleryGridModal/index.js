@@ -78,6 +78,8 @@ const GalleryGridModal = AbstractView.extend({
     setTimeout(() => {
       this.itemContainer.classList.add('is-shown')
     }, delay)
+
+    item.viewedInModal = true
   },
 
   switchItems(item) {
@@ -112,7 +114,7 @@ const GalleryGridModal = AbstractView.extend({
     const gridContentModel = GridContentModel.getInstance()
 
     const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
-    const nextItem = gridContentModel.getNextItem(gridContentKeys, 'random')
+    const nextItem = gridContentModel.getNextItem(gridContentKeys, 'viewedInModal')
 
     this.switchItems(nextItem)
     appRouter.changeAnchor(nextItem.slug)
