@@ -1,7 +1,5 @@
 export default `
   <h1>Can you make it?</h1>
-  <p>Please check the invitation email you received to see if you were invited to the whole day or just evening, and then click on one of these two links and fill out the form to let us know:</p>
-  <h4><a href="/rsvp/all-day">All day guests ></a></h4>
-  <h4><a href="/rsvp/evening">Evening guests ></a></h4>
-  <p><small>If you're not sure, just fill out the all day guests form and we will confirm with you :)</small></p>
+  <p>Please use the Google form below and let us know if you can make it or not!</p>
+  <p><small>If the form doesn't work for any reason, please just email Neil on <a href="mailto:neilanthonycarpenter@gmail.com" target="_blank">neilanthonycarpenter@gmail.com</a> or Annie on <a href="mailto:anniereilly87@gmail.com" target="_blank">anniereilly87@gmail.com</a>.</small></p>
 `
