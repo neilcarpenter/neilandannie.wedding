@@ -36,7 +36,8 @@ const CELL_PROPERTY_MAP = {
   location: 'location',
   time: 'timestamp',
   'comment-annie': 'comment_annie',
-  'comment-neil': 'comment_neil'
+  'comment-neil': 'comment_neil',
+  'forceimagecontain': 'forceImageContain'
 }
 
 const sheet = new GoogleSpreadsheet(SPREADSHEET_ID)

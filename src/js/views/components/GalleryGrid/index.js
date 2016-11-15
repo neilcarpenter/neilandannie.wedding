@@ -19,6 +19,7 @@ import AbstractView from 'views/abstract/AbstractView'
 import gridItemTmplStr from './components/Item/index.tmpl'
 
 const sizes = {
+  LARGE_FULL_PAGE: 10,
   LARGE: 14,
   MEDIUM: 20,
   SMALL: 20
@@ -95,13 +96,14 @@ const GalleryGrid = AbstractView.extend({
 
   buildGrid() {
     const appView = AppView.getInstance()
-    const gridContentModel = GridContentModel.getInstance()
-    const currentSize = this._getGridItemSize()
-    const colCount = this._getColCount()
-    const itemCount = Math.round((this.dimensions.innerWidth / currentSize) * Math.ceil(appView.dimensions.height / currentSize))
-
     const isFullPage = appView.wrapper.currentView instanceof HomeView || appView.wrapper.currentView instanceof GalleryView
     const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
+
+    const gridContentModel = GridContentModel.getInstance()
+    const currentSize = this._getGridItemSize(isFullPage)
+    const colCount = this._getColCount(isFullPage)
+    const itemCount = Math.round((this.dimensions.innerWidth / currentSize) * Math.ceil(appView.dimensions.height / currentSize))
+
 
     for (let i = 0; i < itemCount; i++) {
       const item = gridContentModel.getNextItem(gridContentKeys)
@@ -114,7 +116,7 @@ const GalleryGrid = AbstractView.extend({
   },
 
   addGridItem(contentItem, currentSize, index, isFullPage, config={}) {
-    const colCount = this._getColCount()
+    const colCount = this._getColCount(isFullPage)
     const colour = 'one'
     const row = Math.floor(index / colCount) % 2 !== 0 ? 'even' : 'odd'
     const hideDirection = config.hideDirection || shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
@@ -153,7 +155,6 @@ const GalleryGrid = AbstractView.extend({
   },
 
   replaceGridItem(item) {
-    console.log(`replaceGridItem`, item)
     // @TODO - set this as a timer and clear on page change
     const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
     const oppositeDirection = this._getOppositeDirection(hideDirection)
@@ -161,9 +162,10 @@ const GalleryGrid = AbstractView.extend({
     this.animateItemOut(item, null, hideDirection, () => {
 
       const appView = AppView.getInstance()
-      const gridContentModel = GridContentModel.getInstance()
-      const currentSize = this._getGridItemSize()
       const isFullPage = appView.wrapper.currentView instanceof HomeView || appView.wrapper.currentView instanceof GalleryView
+
+      const gridContentModel = GridContentModel.getInstance()
+      const currentSize = this._getGridItemSize(isFullPage)
       const gridContentKeys = appView.wrapper.activePageModel.get('gridContent')._keys
 
       const i = this.currentItems.indexOf(item)
@@ -187,11 +189,13 @@ const GalleryGrid = AbstractView.extend({
     })
   },
 
-  _getGridItemSize() {
+  _getGridItemSize(isFullPage=false) {
     let sizePercentage
 
     if (MediaQueries.isSmallerThanBreakpoint(MediaQueries.TABLETLANDSCAPE)) {
       sizePercentage = sizes.MEDIUM
+    } else if (isFullPage) {
+      sizePercentage = sizes.LARGE_FULL_PAGE
     } else {
       sizePercentage = sizes.LARGE
     }
@@ -199,17 +203,18 @@ const GalleryGrid = AbstractView.extend({
     return (sizePercentage / 100) * this.dimensions.innerWidth
   },
 
-  _getColCount() {
+  _getColCount(isFullPage=false) {
     if (MediaQueries.isSmallerThanBreakpoint(MediaQueries.TABLETLANDSCAPE)) {
       return 5
+    } else if (isFullPage) {
+      return 10
     } else {
       return 7
     }
   },
 
   _canRenderItem(index, isFullPage) {
-    console.log(`_canRenderItem`, index, isFullPage)
-    const colCount = this._getColCount()
+    const colCount = this._getColCount(isFullPage)
     const state = MediaQueries.getDeviceState()
     let shouldRenderLayout = false
     let shouldRenderChance = false
@@ -270,7 +275,7 @@ const GalleryGrid = AbstractView.extend({
     const hideDirection = direction || shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
 
     setTimeout(() => {
-      item.el.classList.add(`hide--${hideDirection}`)
+      item.el.classList.add('hide', `hide--${hideDirection}`)
       if (cb && typeof cb === 'function') cb()
     }, delay)
   },
