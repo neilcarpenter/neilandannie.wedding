@@ -8,6 +8,8 @@ import UrlHelper from 'common/UrlHelper'
 import Channel from 'common/Channel'
 import Constants from 'common/Constants'
 
+require('dom-shims')
+
 class App {
 
   start () {

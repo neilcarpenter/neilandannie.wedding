@@ -1,6 +1,6 @@
 /*!
  * modernizr v3.3.1
- * Build https://modernizr.com/download?-backgroundblendmode-canvas-csstransforms3d-csstransitions-flexbox-flexboxlegacy-flexboxtweener-history-objectfit-serviceworker-touchevents-xhr2-addtest-domprefixes-hasevent-mq-prefixed-prefixes-setclasses-shiv-testallprops-testprop-teststyles-dontmin
+ * Build https://modernizr.com/download?-backgroundblendmode-canvas-cssfilters-csstransforms3d-csstransitions-flexbox-flexboxlegacy-flexboxtweener-history-objectfit-serviceworker-touchevents-xhr2-addtest-domprefixes-hasevent-mq-prefixed-prefixes-setclasses-shiv-testallprops-testprop-teststyles-dontmin
  *
  * Copyright (c)
  *  Faruk Ates
@@ -24,10 +24,10 @@
 
 ;(function(window, document, undefined){
   var classes = [];
-  
+
 
   var tests = [];
-  
+
 
   /**
    *
@@ -76,7 +76,7 @@
     }
   };
 
-  
+
 
   // Fake some of Object.create so we can force non test results to be non "own" properties.
   var Modernizr = function() {};
@@ -86,7 +86,7 @@
   // Overwrite name so constructor name is nicer :D
   Modernizr = new Modernizr();
 
-  
+
 /*!
 {
   "name": "History API",
@@ -209,7 +209,7 @@ Tests for XHR2.
   // expose these for the plugin API. Look in the source for how to join() them against your input
   ModernizrProto._prefixes = prefixes;
 
-  
+
 
   /**
    * is returns a boolean if the typeof an obj is exactly type.
@@ -305,7 +305,7 @@ Tests for XHR2.
    */
 
   var docElement = document.documentElement;
-  
+
 
   /**
    * A convenience helper to check if the document we are running in is an SVG document
@@ -315,7 +315,7 @@ Tests for XHR2.
    */
 
   var isSVG = docElement.nodeName.toLowerCase() === 'svg';
-  
+
 
   /**
    * setClasses takes an array of class names and adds them to the root element
@@ -706,7 +706,7 @@ Tests for XHR2.
    */
 
   var omPrefixes = 'Moz O ms Webkit';
-  
+
 
   /**
    * List of JavaScript DOM values used for tests
@@ -728,7 +728,7 @@ Tests for XHR2.
 
   var domPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.toLowerCase().split(' ') : []);
   ModernizrProto._domPrefixes = domPrefixes;
-  
+
 
   /**
    * hasOwnProp is a shim for hasOwnProperty that is needed for Safari 2.0 support
@@ -761,7 +761,7 @@ Tests for XHR2.
     }
   })();
 
-  
+
 
 
    // _l tracks listeners for async tests, as well as tests that execute after the initial run
@@ -971,7 +971,7 @@ Tests for XHR2.
     ModernizrProto.addTest = addTest;
   });
 
-  
+
 
 
   /**
@@ -1073,7 +1073,7 @@ Tests for XHR2.
 
 
   ModernizrProto.hasEvent = hasEvent;
-  
+
 /*!
 {
   "name": "Canvas",
@@ -1308,7 +1308,7 @@ Detects support for the `<canvas>` element for 2D drawing.
 
   ModernizrProto.mq = mq;
 
-  
+
 
   /**
    * testStyles injects an element with style element and some CSS rules
@@ -1368,7 +1368,7 @@ Detects support for the `<canvas>` element for 2D drawing.
    */
 
   var testStyles = ModernizrProto.testStyles = injectElementWithStyles;
-  
+
 /*!
 {
   "name": "Touch Events",
@@ -1424,7 +1424,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
 
   var cssomPrefixes = (ModernizrProto._config.usePrefixes ? omPrefixes.split(' ') : []);
   ModernizrProto._cssomPrefixes = cssomPrefixes;
-  
+
 
   /**
    * atRule returns a given CSS property at-rule (eg @keyframes), possibly in
@@ -1491,7 +1491,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
 
   ModernizrProto.atRule = atRule;
 
-  
+
 
 
   /**
@@ -1581,7 +1581,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
     delete modElem.elem;
   });
 
-  
+
 
   var mStyle = {
     style: modElem.elem.style
@@ -1593,7 +1593,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
     delete mStyle.style;
   });
 
-  
+
 
   /**
    * domToCSS takes a camelCase string and converts it to kebab-case
@@ -1784,7 +1784,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
   var testProp = ModernizrProto.testProp = function(prop, value, useValue) {
     return testProps([prop], undefined, value, useValue);
   };
-  
+
 
   /**
    * testPropsAll tests a list of DOM properties we want to check against.
@@ -1823,7 +1823,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
   // Modernizr.testAllProps('boxSizing')
   ModernizrProto.testAllProps = testPropsAll;
 
-  
+
 
   /**
    * prefixed returns the prefixed or nonprefixed property name variant of your input
@@ -1907,7 +1907,7 @@ This test will also return `true` for Firefox 4 Multitouch support.
     }
   };
 
-  
+
 /*!
 {
   "name": "CSS Background Blend Mode",
@@ -1989,7 +1989,7 @@ Detects the ability for the browser to composite backgrounds using blending mode
     return testPropsAll(prop, undefined, undefined, value, skipValueTest);
   }
   ModernizrProto.testAllProps = testAllProps;
-  
+
 /*!
 {
   "name": "Flexbox",
@@ -2097,6 +2097,34 @@ Detects support for the Flexible Box Layout model, a.k.a. Flexbox, which allows 
 !*/
 
   Modernizr.addTest('csstransitions', testAllProps('transition', 'all', true));
+
+/*!
+{
+  "name": "CSS Filters",
+  "property": "cssfilters",
+  "caniuse": "css-filters",
+  "polyfills": ["polyfilter"],
+  "tags": ["css"],
+  "builderAliases": ["css_filters"],
+  "notes": [{
+    "name": "MDN article on CSS filters",
+    "href": "https://developer.mozilla.org/en-US/docs/Web/CSS/filter"
+  }]
+}
+!*/
+
+  Modernizr.addTest('cssfilters', function() {
+    if (Modernizr.supports) {
+      return testAllProps('filter', 'blur(2px)');
+    } else {
+      var el = createElement('a');
+      el.style.cssText = prefixes.join('filter:blur(2px); ');
+      // https://github.com/Modernizr/Modernizr/issues/615
+      // documentMode is needed for false positives in oldIE, please see issue above
+      return !!el.style.length && ((document.documentMode === undefined || document.documentMode > 9));
+    }
+  });
+
 
 
   // Run each test

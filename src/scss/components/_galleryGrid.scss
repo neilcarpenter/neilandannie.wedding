@@ -141,6 +141,16 @@
     .is-gallery & {
       filter: sepia(0.3) brightness(0.5);
     }
+
+    .no-object-fit & {
+      left: -10%;
+      width: 120%;
+      height: auto;
+    }
+
+    .no-cssfilters & {
+      opacity: 0.4;
+    }
   }
 }
 
@@ -161,6 +171,10 @@
 
   .colour--one & {
     background: $colour--one;
+
+    .no-cssfilters & {
+      background: #613D3D;
+    }
   }
 
   .colour--two & {
