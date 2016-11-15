@@ -19,6 +19,6 @@ export default function parseQueryString (query) {
     match = search.exec(query)
   }
 
-  // console.debug('parseQueryString:', query, JSON.stringify(params, null, 2));
+  // console.log('parseQueryString:', query, JSON.stringify(params, null, 2));
   return params
 }

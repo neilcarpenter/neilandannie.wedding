@@ -12,7 +12,7 @@ export function getPagePartials(page) {
   let partials = page.querySelectorAll('[data-naaw-page-partial]')
   partials = Array.prototype.slice.call(partials)
   partials.forEach(partial => {
-    const name = partial.dataset.naawPagePartial
+    const name = partial.getAttribute('data-naaw-page-partial')
     if (partialsObject[name]) {
       partialsObject[name].push(partial)
     } else {
@@ -77,7 +77,7 @@ const PageModel = Model.extend({
   parse(response, options) {
     const document = response
     const page = response.querySelector('[data-naaw-page]')
-    const pageType = page ? page.dataset.naawPage : null
+    const pageType = page ? page.getAttribute('data-naaw-page') : null
     const pagePartials = getPagePartials(page)
     const title = response.querySelector('title').textContent
     const description = response.querySelector('meta[name="description"]') ? response.querySelector('meta[name="description"]').getAttribute('content') : null

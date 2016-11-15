@@ -17,7 +17,7 @@ class App {
 
     const appView = AppView.getInstance()
     const appRouter = AppRouter.getInstance()
-    const appModel = AppModel.getInstance(JSON.parse(appView.el.dataset.appModel))
+    const appModel = AppModel.getInstance(JSON.parse(appView.el.getAttribute('data-app-model')))
 
     UrlHelper.setup()
 

@@ -8,7 +8,7 @@ const GeneralPage = AbstractViewPage.extend({
   constructor(config = {}) {
     GeneralPage.__super__.constructor.call(this, config)
 
-    console.debug('==> GeneralPage init')
+    console.log('==> GeneralPage init')
   }
 })
 

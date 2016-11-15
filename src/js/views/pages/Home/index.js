@@ -8,7 +8,7 @@ const HomePage = AbstractViewPage.extend({
   constructor(config = {}) {
     HomePage.__super__.constructor.call(this, config)
 
-    console.debug('==> HomePage init')
+    console.log('==> HomePage init')
   }
 })
 

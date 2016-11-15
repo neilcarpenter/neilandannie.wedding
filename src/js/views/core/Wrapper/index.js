@@ -93,7 +93,7 @@ const Wrapper = AbstractView.extend({
     const document = window.document
     const page = this.query('[data-naaw-page]')
     const pagePartials = getPagePartials(page)
-    const pageType = page.dataset.naawPage
+    const pageType = page.getAttribute('data-naaw-page')
     const pageUrl = UrlHelper.getFullPathFromRouteObject(current)
     const title = document.title
     const description = document.querySelector('meta[name="description"]') ? document.querySelector('meta[name="description"]').getAttribute('content') : null

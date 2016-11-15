@@ -12,7 +12,7 @@ const RsvpPage = AbstractViewPage.extend({
   constructor(config = {}) {
     RsvpPage.__super__.constructor.call(this, config)
 
-    console.debug('==> RsvpPage init')
+    console.log('==> RsvpPage init')
   }
 })
 
