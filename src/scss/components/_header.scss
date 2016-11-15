@@ -37,6 +37,13 @@ $logo-height: 154;
     opacity: 0;
   }
 
+  .lte-ie9 & {
+
+    path {
+      fill: $black !important;
+    }
+  }
+
   svg {
     width: 100%;
     height: 100%;
@@ -76,6 +83,10 @@ $logo-height: 154;
 
   .no-cssfilters & {
     text-shadow: 1px 1px 0 rgba(0, 0, 0, 0.5);
+  }
+
+  .lte-ie9 & {
+    color: $black !important;
   }
 }
 
@@ -220,6 +231,17 @@ $logo-height: 154;
 
   .is-gallery &.is-active {
     border-bottom: 2px solid $white;
+  }
+
+  .lte-ie9 & {
+    color: $black !important;
+  }
+
+  &.is-gallery {
+
+    .lte-ie9 & {
+      display: none;
+    }
   }
 }
 

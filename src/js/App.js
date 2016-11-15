@@ -9,6 +9,7 @@ import Channel from 'common/Channel'
 import Constants from 'common/Constants'
 
 require('dom-shims')
+require('utils/raf')
 
 class App {
 

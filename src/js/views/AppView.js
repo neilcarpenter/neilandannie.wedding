@@ -194,7 +194,7 @@ const AppView = AbstractView.extend({
 
       const appRouter = AppRouter.getInstance()
       appRouter.navigateTo(href)
-    } else {
+    } else if (Modernizr.naaw_page_transitions) {
       if (e) e.preventDefault()
       window.open(href)
     }

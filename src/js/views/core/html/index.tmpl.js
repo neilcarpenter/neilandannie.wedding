@@ -1,6 +1,7 @@
 export default `
 <!DOCTYPE html>
-<html class="no-js">
+<!--[if lte IE 9]>     <html class="no-js lte-ie9"> <![endif]-->
+<!--[if gt IE 9]><!--> <html class="no-js"> <!--<![endif]-->
 <head>
   <meta name="content-type" content="text/html; charset=utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">

@@ -18,7 +18,7 @@ export default `
         <li><a class="header--nav-item" data-nav-link href="/about">about</a></li>
         <li><a class="header--nav-item" data-nav-link href="/when-where">when & where</a></li>
         <li><a class="header--nav-item" data-nav-link href="/places-to-stay">places to stay</a></li>
-        <li><a class="header--nav-item" data-nav-link href="/gallery">gallery</a></li>
+        <li><a class="header--nav-item is-gallery" data-nav-link href="/gallery">gallery</a></li>
         <li><a class="header--nav-item" data-nav-link href="/rsvp">rsvp</a></li>
       </ul>
     </nav>
