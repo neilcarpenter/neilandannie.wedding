@@ -6,7 +6,7 @@ export default `
 
   <h4>What’s happening on the day?</h4>
   <p>The ceremony starts at 1.30pm, and will either be outside in the orchard or in the barn (fingers crossed for sunshine!). </p>
-  <p>Following the speeches, the party starts around 6.30pm and ends at 11.30pm. Everyone has to leave the venue by midnight!</p>
+  <p>Following the dinner and the speeches, the party starts around 6.30pm and ends at 11.30pm. Everyone has to leave the venue by midnight!</p>
 
   <h4>Can I bring my kids? Can I bring a plus one?</h4>
   <p>Unfortunately there is limited space at the barn so we can't accommodate +1s or kids, check your invitation if you're not sure who is invited.</p>

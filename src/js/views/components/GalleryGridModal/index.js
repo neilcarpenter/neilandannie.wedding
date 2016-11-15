@@ -66,6 +66,8 @@ const GalleryGridModal = AbstractView.extend({
     }, 400)
 
     this.shown = false
+
+    Channel.trigger(Constants.EVENT_GALLERY_MODAL_HIDE)
   },
 
   showItem(item, fromSwitch=true) {

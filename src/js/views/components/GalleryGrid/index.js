@@ -55,6 +55,7 @@ const GalleryGrid = AbstractView.extend({
     this.onFirstHashChanged = this.onFirstHashChanged.bind(this)
     this.onResize = this.onResize.bind(this)
     this.onChangeViewComplete = this.onChangeViewComplete.bind(this)
+    this.onModalHide = this.onModalHide.bind(this)
   },
 
   cacheDimensions() {
@@ -66,6 +67,7 @@ const GalleryGrid = AbstractView.extend({
   bindEvents() {
     this.listenToOnce(Channel, Constants.EVENT_HASH_CHANGED, this.onFirstHashChanged)
     this.listenTo(Channel, Constants.EVENT_CHANGE_VIEW_COMPLETE, this.onChangeViewComplete)
+    this.listenTo(Channel, Constants.EVENT_GALLERY_MODAL_HIDE, this.onModalHide)
   },
 
   onFirstHashChanged() {
@@ -142,7 +144,7 @@ const GalleryGrid = AbstractView.extend({
 
     const item = { el, left, top }
 
-    this.currentItems.push(item)
+    if (!config.itemIsReplacement) this.currentItems[index] = item
     this.gridInner.appendChild(item.el)
 
     setTimeout(() => {
@@ -151,6 +153,7 @@ const GalleryGrid = AbstractView.extend({
   },
 
   replaceGridItem(item) {
+    console.log(`replaceGridItem`, item)
     // @TODO - set this as a timer and clear on page change
     const hideDirection = shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
     const oppositeDirection = this._getOppositeDirection(hideDirection)
@@ -171,13 +174,15 @@ const GalleryGrid = AbstractView.extend({
           top: item.top,
           left: item.left,
           hideDirection: oppositeDirection,
-          delay: 50
+          delay: 50,
+          itemIsReplacement: true
         }
         this.addGridItem(newItem, currentSize, i, isFullPage, config)
+        this.startItemTimer(item)
       }
 
       // @TODO - make this work
-      // this.currentItems.splice(i, 1, newItem)
+      this.currentItems.splice(i, 1, newItem)
 
     })
   },
@@ -203,6 +208,7 @@ const GalleryGrid = AbstractView.extend({
   },
 
   _canRenderItem(index, isFullPage) {
+    console.log(`_canRenderItem`, index, isFullPage)
     const colCount = this._getColCount()
     const state = MediaQueries.getDeviceState()
     let shouldRenderLayout = false
@@ -245,7 +251,7 @@ const GalleryGrid = AbstractView.extend({
   },
 
   animateItemsOut(cb) {
-    this.stopItemTimers()
+    // this.stopItemTimers()
 
     let maxDelay = 0
     this.currentItems.forEach(item => {
@@ -264,16 +270,20 @@ const GalleryGrid = AbstractView.extend({
     const hideDirection = direction || shuffle([ 'top', 'bottom', 'left', 'right' ])[0]
 
     setTimeout(() => {
-      item.el.classList.add('hide', `hide--${hideDirection}`)
+      item.el.classList.add(`hide--${hideDirection}`)
       if (cb && typeof cb === 'function') cb()
     }, delay)
   },
 
   startItemTimers() {
     this.currentItems.forEach(item => {
-      const replaceItemDelay = random(2000, 15000)
-      item.timer = setTimeout(this.replaceGridItem.bind(this, item), replaceItemDelay)
+      this.startItemTimer(item)
     })
+  },
+
+  startItemTimer(item) {
+    const replaceItemDelay = random(3000, 50000)
+    item.timer = setTimeout(this.replaceGridItem.bind(this, item), replaceItemDelay)
   },
 
   stopItemTimers() {
@@ -290,6 +300,12 @@ const GalleryGrid = AbstractView.extend({
 
     Channel.trigger(Constants.EVENT_GALLERY_MODAL_SHOW, item, row)
     appRouter.changeAnchor(item.slug)
+
+    // this.stopItemTimers()
+  },
+
+  onModalHide() {
+    // this.startItemTimers()
   }
 })
 
