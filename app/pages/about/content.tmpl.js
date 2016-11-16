@@ -8,6 +8,10 @@ export default `
   <p>The ceremony starts at 1.30pm, and will either be outside in the orchard or in the barn (fingers crossed for sunshine!). </p>
   <p>Following the dinner and the speeches, the party starts around 6.30pm and ends at 11.30pm. Everyone has to leave the venue by midnight!</p>
 
+  <h4>How should I let you know that I am coming?</h4>
+  <p>Please RSVP via the form on the <a href="/rsvp">RSVP page</a>, alternatively if that isn't working for you, you can email Neil on <a href="mailto:neilanthonycarpenter@gmail.com">neilanthonycarpenter@gmail.com</a> or Annie on <a href="mailto:anniereilly87@gmail.com">anniereilly87@gmail.com</a>.</p>
+  <p><b>Please RSVP by Friday 23rd December</b> so we can plan accordingly! :)</p>
+
   <h4>Can I bring my kids? Can I bring a plus one?</h4>
   <p>Unfortunately there is limited space at the barn so we can't accommodate +1s or kids, check your invitation if you're not sure who is invited.</p>
 
