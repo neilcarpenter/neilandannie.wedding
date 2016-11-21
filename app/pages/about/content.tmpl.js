@@ -19,7 +19,9 @@ export default `
   <p>Yes, there is a free car park in the field next to the barn.</p>
 
   <h4>How do I find The Great Barn?</h4>
-  <p>From the centre of Rolvenden take the A28 towards Tenterden. Just beyond the end of the 30mph limit turn Left into Halden Lane, the turning for which is adjacent to a row of houses. Drive for 1½ miles to the first farm on the Right, Halden Place (opposite Leyton House). Check the <a href="/when-where">When & Where page</a> for the full address.</p>
+  <p>By train: The nearest station to the barn is Headcorn, which is approximately 15 minutes away by car. Trains run there regularly from London Charing Cross, Waterloo or London Bridge and take just over an hour.</p>
+  <p>If you're driving: From the centre of Rolvenden take the A28 towards Tenterden. Just beyond the end of the 30mph limit turn Left into Halden Lane, the turning for which is adjacent to a row of houses. Drive for 1½ miles to the first farm on the Right, Halden Place (opposite Leyton House).</p>
+  <p>Check the <a href="/when-where">When & Where page</a> for the full address.</p>
 
   <h4>Is there transport to and from the venue?</h4>
   <p>You’ll need to make your own way to and from the venue, but there are plenty of local taxi companies:</p>
