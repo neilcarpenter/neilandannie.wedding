@@ -1,0 +1,57 @@
+dev:
+    scheme: ftp
+    host: XXX
+    port: 21
+    user: XXX
+    pass: XXX
+    check: true
+    path:
+        local: app/build/
+        remote: /public_html/wedding-dev
+    exclude: []
+    include:
+        "app/build/**/*": "/"
+        "app/gridContent/gridAssets/**/*": "/gridAssets/"
+
+dev_no_assets:
+    scheme: ftp
+    host: XXX
+    port: 21
+    user: XXX
+    pass: XXX
+    check: true
+    path:
+        local: app/build/
+        remote: /public_html/wedding-dev
+    exclude: []
+    include:
+        "app/build/**/*": "/"
+
+live:
+    scheme: ftp
+    host: XXX
+    port: 21
+    user: XXX
+    pass: XXX
+    check: true
+    path:
+        local: app/build/
+        remote: /public_html/wedding
+    exclude: []
+    include:
+        "app/build/**/*": "/"
+        "app/gridContent/gridAssets/**/*": "/gridAssets/"
+
+live_no_assets:
+    scheme: ftp
+    host: XXX
+    port: 21
+    user: XXX
+    pass: XXX
+    check: true
+    path:
+        local: app/build/
+        remote: /public_html/wedding
+    exclude: []
+    include:
+        "app/build/**/*": "/"

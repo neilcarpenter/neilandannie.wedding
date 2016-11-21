@@ -24,6 +24,8 @@
     "build:dev": ". ~/.nvm/nvm.sh && nvm use && gulp build && node script/_run.js generateStaticMarkup",
     "deploy": "npm test && npm run build && dploy live",
     "deploy:dev": "npm test && npm run build:dev && dploy dev",
+    "deploy:no_assets": "npm test && npm run build && dploy live_no_assets",
+    "deploy:dev:no_assets": "npm test && npm run build:dev && dploy dev_no_assets",
     "test": "node script/_run.js testGridContent"
   },
   "folders": {
