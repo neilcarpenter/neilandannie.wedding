@@ -5,6 +5,7 @@ export default `
   <p>We can't wait to celebrate with you all!</p>
 
   <h4>What’s happening on the day?</h4>
+  <p>Please arrive between 12.30-1.00pm, welcome drinks will be provided! :).</p>
   <p>The ceremony starts at 1.30pm, and will either be outside in the orchard or in the barn (fingers crossed for sunshine!). </p>
   <p>Following the dinner and the speeches, the party starts around 6.30pm and ends at 11.30pm. Everyone has to leave the venue by midnight!</p>
 
@@ -24,7 +25,13 @@ export default `
   <p>Check the <a href="/when-where">When & Where page</a> for the full address.</p>
 
   <h4>Is there transport to and from the venue?</h4>
-  <p>You’ll need to make your own way to and from the venue, but there are plenty of local taxi companies:</p>
+  <p>The barn is in a rural area and the nearest station (Headcorn) is 15 minutes drive away.</p>
+  <p>We'll be organising mini buses to take you back to hotels within the local area after the party ends (11.30pm-midnight).</p>
+  <p><b><i><a href="https://goo.gl/forms/rd9DkgARyUHkhJd53" target="_blank">Please make sure you let us know whether you'd like to take up this offer via this form</a>.</i></b></p>
+  <p>It will cost approx £5 per person and you can pay on the day.</p>
+  <p>If you'd rather sort out your own transport that's absolutely fine. There are plenty of local taxi companies but be aware that many take advanced bookings and are already full on that night.</p>
+  <p>If you have any questions about your transport please just let us know.</p>
+  <p>If you would like to book your own taxi instead, you can try these companies:</p>
   <ul>
     <li>007 Cars (Hawkhurst) - 01580 755775</li>
     <li>Adam’s Private Hire (Etchingham) - 07957 404201</li>
@@ -49,6 +56,15 @@ export default `
   <p>We don’t expect gifts, but we know that some guests will want to get us something, for which we are really grateful.</p>
   <!-- <p>We’ve set up a gift list with xxxx where you can contribute to our honeymoon or buy us a present if you’d prefer.</p> -->
   <p>We are going to set up a online gift list where you can contribute to our honeymoon or buy us a present if you’d prefer. The details for this list will be added to this site once we have them.</p>
+
+  <h4>What food will you be serving? Can you accommodate my dietary requirements?</h4>
+  <p>We'll be serving an Italian feasting menu for the main meal, and there'll be hot snacks in the evening to fuel the dancing!</p>
+  <p>We can accommodate any dietary requirements you have, but only if you've told us about them in advance.</p>
+  <p>If you filled in the RSVP form on this website we should already know about your requirements. If you RSVP'd via email, text, verbally, carrier pigeon or any other method, we may not know so please get in touch to tell us asap.</p>
+
+  <h4>Will I need to bring cash for drinks? Is there a cash point nearby?</h4>
+  <p>There'll be a cash bar in the evening after the meal. They take card, but given the phone signal isn't great in the area it might be a good idea to bring some cash too.</p>
+  <p>There is no cashpoint near the barn!</p>
 
   <h4>I have another question but I can't find an answer on here...</h4>
   <p>Then just email Neil on <a href="mailto:neilanthonycarpenter@gmail.com">neilanthonycarpenter@gmail.com</a> or Annie on <a href="mailto:anniereilly87@gmail.com">anniereilly87@gmail.com</a> and we will help you out!</p>
