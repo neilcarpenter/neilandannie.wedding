@@ -54,8 +54,8 @@ export default `
 
   <h4>Shall I bring a present?</h4>
   <p>We don’t expect gifts, but we know that some guests will want to get us something, for which we are really grateful.</p>
-  <!-- <p>We’ve set up a gift list with xxxx where you can contribute to our honeymoon or buy us a present if you’d prefer.</p> -->
-  <p>We are going to set up a online gift list where you can contribute to our honeymoon or buy us a present if you’d prefer. The details for this list will be added to this site once we have them.</p>
+  <p>We’ve set up a gift list with Prezola where you can contribute to our honeymoon or buy us a present if you’d prefer, <a href="https://prezola.com/wishlists/10172178/" target="_blank">you can see the list here</a>.</p>
+  <!-- <p>We are going to set up a online gift list where you can contribute to our honeymoon or buy us a present if you’d prefer. The details for this list will be added to this site once we have them.</p> -->
 
   <h4>What food will you be serving? Can you accommodate my dietary requirements?</h4>
   <p>We'll be serving an Italian feasting menu for the main meal, and there'll be hot snacks in the evening to fuel the dancing!</p>
