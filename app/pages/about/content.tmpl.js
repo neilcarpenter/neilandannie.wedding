@@ -53,8 +53,7 @@ export default `
   <p>We hope to make full use of the lovely orchard for the ceremony and drinks, so choose footwear you can walk in on the grass!</p>
 
   <h4>Shall I bring a present?</h4>
-  <p>We don’t expect gifts, but we know that some guests will want to get us something, for which we are really grateful.</p>
-  <p>We’ve set up a gift list with Prezola where you can contribute to our honeymoon or buy us a present if you’d prefer, <a href="https://prezola.com/wishlists/10172178/" target="_blank">you can see the list here</a>.</p>
+  <p>Check out the <a href="/gift-list">gift list page!</a></p>
   <!-- <p>We are going to set up a online gift list where you can contribute to our honeymoon or buy us a present if you’d prefer. The details for this list will be added to this site once we have them.</p> -->
 
   <h4>What food will you be serving? Can you accommodate my dietary requirements?</h4>

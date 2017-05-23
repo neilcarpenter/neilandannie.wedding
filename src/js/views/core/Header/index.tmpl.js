@@ -19,7 +19,7 @@ export default `
         <li><a class="header--nav-item" data-nav-link href="/when-where">when & where</a></li>
         <li><a class="header--nav-item" data-nav-link href="/places-to-stay">places to stay</a></li>
         <li><a class="header--nav-item is-gallery" data-nav-link href="/gallery">gallery</a></li>
-        <li><a class="header--nav-item" data-nav-link href="/rsvp">rsvp</a></li>
+        <li><a class="header--nav-item" data-nav-link href="/gift-list">gift list</a></li>
       </ul>
     </nav>
     <span class="header--burger-btn" data-burger-btn>
