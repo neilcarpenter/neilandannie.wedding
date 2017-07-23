@@ -15,7 +15,7 @@ export default `
     </h1>
     <nav class="header--nav">
       <ul class="unstyled">
-        <li><a class="header--nav-item" data-nav-link href="/about">about</a></li>
+        <li><a class="header--nav-item" data-nav-link href="/about">faqs</a></li>
         <li><a class="header--nav-item" data-nav-link href="/when-where">when & where</a></li>
         <li><a class="header--nav-item" data-nav-link href="/places-to-stay">places to stay</a></li>
         <li><a class="header--nav-item is-gallery" data-nav-link href="/gallery">gallery</a></li>
